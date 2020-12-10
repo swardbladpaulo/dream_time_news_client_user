@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 
-const getArticleData = async () => {
+const getData = async () => {
   let headers = await sessionStorage.getItem("articles");
   headers = JSON.parse( headers );
   headers = {
@@ -17,4 +17,4 @@ const getArticleData = async () => {
   return response;
 };
 
-export { getArticleData };
+export { getData };

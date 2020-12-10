@@ -5,7 +5,7 @@ describe("Visitor can", () => {
   });
 
   describe("successfully", () => {
-    beforeEach(() => {
+    before(() => {
       cy.server();
       cy.route({
         method: "GET",
@@ -14,11 +14,11 @@ describe("Visitor can", () => {
       });
     });
 
-    it("view all listed articles", () => {
-      cy.get('[data-cy="index"]').within(() => {
-        cy.contains("Title 1");
-        cy.contains("Title 2");
-        cy.contains("Title 3");
+    it("successfully view all listed articles", () => {
+      cy.get('#index').within(() => {
+        cy.contains('Contrary to popular');
+        cy.contains('Richard McClintock');
+        cy.contains('Lorem Ipsum comes');
       });
     });
   });
@@ -29,12 +29,12 @@ describe("Visitor can", () => {
       cy.route({
         method: "GET",
         url: "http://localhost:3000/api/articles",
-        response: {},
+        response: {"articles": []},
       });
     });
 
-    it("view all listed articles", () => {
-      cy.get('[data-cy="index"]').should("not.exist");
+    it("unsuccessfully view all listed articles", () => {
+      cy.get('#index').should("not.exist");
     });
   });
 });
