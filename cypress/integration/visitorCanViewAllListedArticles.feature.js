@@ -1,6 +1,5 @@
 /* eslint-disable no-undef */
 describe("Visitor can see list of articles", () => {
-
   describe("successfully", () => {
     beforeEach(() => {
       cy.server();
@@ -14,9 +13,9 @@ describe("Visitor can see list of articles", () => {
 
     it("successfully view all listed articles", () => {
       cy.get('[data-cy="index"]').within(() => {
-        cy.contains('Title1');
-        cy.contains('Title2');
-        cy.contains('Title3');
+        cy.contains("Title1");
+        cy.contains("Title2");
+        cy.contains("Title3");
       });
     });
   });
@@ -27,7 +26,7 @@ describe("Visitor can see list of articles", () => {
       cy.route({
         method: "GET",
         url: "http://localhost:3000/api/articles",
-        response: {"articles": []},
+        response: { articles: [] },
       });
       cy.visit("/");
     });
