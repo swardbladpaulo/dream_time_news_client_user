@@ -29,7 +29,7 @@ const DisplayArticlesData = () => {
             {article.title}
           </Card.Header>
           <Card.Meta
-            data-cy="subtitle"
+            data-cy="sub-title"
             style={{
               fontWeight: "bold",
               fontSize: 20,
@@ -44,14 +44,24 @@ const DisplayArticlesData = () => {
             size="small"
             wrapped
             ui={false}
-            src={article.image_path}
+            src={article.image}
           />
           <Card.Description
-            data-cy="description"
+            data-cy="content"
             style={{ fontWeight: "small", fontSize: 15, color: "black" }}
           >
             {article.content}
           </Card.Description>
+          <Card.Meta 
+            data-cy="author"
+            >
+            {article.author}
+          </Card.Meta>
+          <Card.Meta 
+            data-cy="date"
+            >
+            {article.date}
+          </Card.Meta>
         </Card.Content>
       </Card>
     );

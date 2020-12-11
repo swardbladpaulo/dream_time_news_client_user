@@ -3,8 +3,8 @@
     {
       "id": 1,
       "title": "Title1",
-      "subheader": "subheader 1",
-      "image_path": "https://images.unsplash.com/photo-1489710437720-ebb67ec84dd2?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NTZ8fGhhcHB5JTIwcGVvcGxlfGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60",
+      "sub_title": "sub_title 1",
+      "image": "https://images.unsplash.com/photo-1489710437720-ebb67ec84dd2?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NTZ8fGhhcHB5JTIwcGVvcGxlfGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60",
       "content": "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.",
       "author": "journalist@mail.com",
       "date": "26 december 2020"
@@ -13,8 +13,8 @@
     {
       "id": 2,
       "title": "Title2",
-      "subheader": "subheader 2",
-      "image_path": "https://images.unsplash.com/photo-1469793743020-8a607ba773e5?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NzZ8fGhhcHB5JTIwcGVvcGxlfGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60",
+      "sub_title": "sub_title 2",
+      "image": "https://images.unsplash.com/photo-1469793743020-8a607ba773e5?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NzZ8fGhhcHB5JTIwcGVvcGxlfGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60",
       "content": "Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.",
       "author": "journalist@mail.com",
       "date": "1 december 2020"
@@ -23,8 +23,8 @@
     {
       "id": 3,
       "title": "Title3",
-      "subheader": "subheader 3",
-      "image_path": "https://images.unsplash.com/photo-1595239094789-4e00e532528a?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MzF8fGhhcHB5JTIwcGVvcGxlfGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60",
+      "sub_title": "sub_title 3",
+      "image": "https://images.unsplash.com/photo-1595239094789-4e00e532528a?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MzF8fGhhcHB5JTIwcGVvcGxlfGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60",
       "content": "Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of 'de Finibus Bonorum et Malorum' (The Extremes of Good and Evil) by Cicero, written in 45 BC.",
       "author": "journalist@mail.com",
       "date": "15 november 2020"

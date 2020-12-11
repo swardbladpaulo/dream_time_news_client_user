@@ -16,9 +16,12 @@ describe("Visitor can see list of articles", () => {
         cy.get(">div").each((_, index) => {
           cy.get(`[data-cy="article-${index + 1}"]`).within(() => {
             cy.get('[data-cy="title"]').should("exist");
-            cy.get('[data-cy="subtitle"]').should("exist");
+            cy.get('[data-cy="sub-title"]').should("exist");
             cy.get('[data-cy="image"]').should("exist");
-            cy.get('[data-cy="description"]').should("exist");
+            cy.get('[data-cy="content"]').should("exist");
+            cy.get('[data-cy="author"]').should("exist");
+            cy.get('[data-cy="date"]').should("exist");
+
           });
         });
       });
