@@ -1,41 +1,29 @@
-import React, { useState, useEffect } from 'react';
-import { getData } from '../modules/articlesData'
+import React, { useState, useEffect } from "react";
+import { getArticleData } from "../modules/articlesData";
 
-const DisplayArticlesData = (props) => {
-  const [articlesData, setArticlesData] = useState([])
+const DisplayArticlesData = () => {
+  const [articlesData, setArticlesData] = useState([]);
   const getArticlesData = async () => {
-    let result = await getData();
-    setArticlesData(result.data.articles)
-  }
+    let result = await getArticleData();
+    setArticlesData(result.data.articles);
+  };
 
   useEffect(() => {
-    getArticlesData()
-  }, [])
+    getArticlesData();
+  }, []);
 
-  let dataIndex = articlesData.map((item) => {
+  let articleIndex = articlesData.map((article) => {
     return (
-      <div key={item.id} data-cy={`article-${item.id}`}>
-        {item.title}{item.subheader}{item.content}
-        {localStorage.getItem('authenticated') === 'true' &&
-          <button
-            data-article={item.id}
-            onClick={(e) => props.articles(e)}
-          >
-            Articles
-          </button>
-        }
+      <div key={article.id} data-cy={`article-${article.id}`}>
+        {article.title}
+        {article.subheader}
+        {article.content}
       </div>
-    )
-  })
+    );
+  });
   return (
-    <>
-      {articlesData.length > 0 &&
-      <div id="index">
-      {dataIndex}
-      </div>
-      }
-      </>
-  )
-}
+    <>{articlesData.length > 0 && <div data-cy="index">{articleIndex}</div>}</>
+  );
+};
 
-export default DisplayArticlesData
+export default DisplayArticlesData;
