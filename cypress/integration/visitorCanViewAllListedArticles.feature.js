@@ -13,9 +13,14 @@ describe("Visitor can see list of articles", () => {
 
     it("successfully view all listed articles", () => {
       cy.get('[data-cy="index"]').within(() => {
-        cy.contains("Title1");
-        cy.contains("Title2");
-        cy.contains("Title3");
+        cy.get(">div").each((_, index) => {
+          cy.get(`[data-cy="article-${index + 1}"]`).within(() => {
+            cy.get('[data-cy="title"]').should("exist");
+            cy.get('[data-cy="subtitle"]').should("exist");
+            cy.get('[data-cy="image"]').should("exist");
+            cy.get('[data-cy="description"]').should("exist");
+          });
+        });
       });
     });
   });

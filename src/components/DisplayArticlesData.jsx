@@ -4,13 +4,13 @@ import { Card, Image } from "semantic-ui-react";
 
 const DisplayArticlesData = () => {
   const [articlesData, setArticlesData] = useState([]);
-  const getArticlesData = async () => {
+  const getArticles = async () => {
     let result = await getArticleData();
     setArticlesData(result.data.articles);
   };
 
   useEffect(() => {
-    getArticlesData();
+    getArticles();
   }, []);
 
   let articleIndex = articlesData.map((article) => {
@@ -18,6 +18,7 @@ const DisplayArticlesData = () => {
       <Card key={article.id} data-cy={`article-${article.id}`}>
         <Card.Content>
           <Card.Header
+            data-cy="title"
             style={{
               fontWeight: "bold",
               fontSize: 30,
@@ -28,6 +29,7 @@ const DisplayArticlesData = () => {
             {article.title}
           </Card.Header>
           <Card.Meta
+            data-cy="subtitle"
             style={{
               fontWeight: "bold",
               fontSize: 20,
@@ -37,8 +39,15 @@ const DisplayArticlesData = () => {
           >
             {article.subheader}
           </Card.Meta>
-          <Image size="small" wrapped ui={false} src={article.image_path} />
+          <Image
+            data-cy="image"
+            size="small"
+            wrapped
+            ui={false}
+            src={article.image_path}
+          />
           <Card.Description
+            data-cy="description"
             style={{ fontWeight: "small", fontSize: 15, color: "black" }}
           >
             {article.content}
@@ -47,10 +56,10 @@ const DisplayArticlesData = () => {
       </Card>
     );
   });
-  if (articlesData.length > 0) {
-    return <div data-cy="index">{articleIndex}</div>;
-  }
-  return <></>;
+
+  return (
+    <>{articlesData.length > 0 && <div data-cy="index">{articleIndex}</div>}</>
+  );
 };
 
 export default DisplayArticlesData;
