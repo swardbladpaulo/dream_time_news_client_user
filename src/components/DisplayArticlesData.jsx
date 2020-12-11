@@ -12,7 +12,7 @@ const DisplayArticlesData = (props) => {
     getArticlesData()
   }, [])
 
-  let dataIndex = articlesData.map(item => {
+  let dataIndex = articlesData.map((item) => {
     return (
       <div key={item.id} data-cy={`article-${item.id}`}>
         {item.title}{item.subheader}{item.content}

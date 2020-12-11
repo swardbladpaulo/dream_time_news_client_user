@@ -1,5 +1,5 @@
 import React from "react";
-import DisplayArticlesData from './modules/articlesData'
+import DisplayArticlesData from './components/DisplayArticlesData'
 
 const App = () => {
   return (

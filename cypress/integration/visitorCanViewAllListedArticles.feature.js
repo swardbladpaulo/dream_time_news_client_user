@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-describe("Visitor can", () => {
+describe("Visitor can see list of articles", () => {
   beforeEach(() => {
     cy.visit("/");
   });
@@ -16,9 +16,9 @@ describe("Visitor can", () => {
 
     it("successfully view all listed articles", () => {
       cy.get('#index').within(() => {
-        cy.contains('Contrary to popular');
-        cy.contains('Richard McClintock');
-        cy.contains('Lorem Ipsum comes');
+        cy.contains('Title1');
+        cy.contains('Title2');
+        cy.contains('Title3');
       });
     });
   });
