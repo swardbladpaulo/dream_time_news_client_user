@@ -37,7 +37,7 @@ const DisplayArticlesData = () => {
               textAlign: "center",
             }}
           >
-            {article.subheader}
+            {article.sub_title}
           </Card.Meta>
           <Image
             data-cy="image"
