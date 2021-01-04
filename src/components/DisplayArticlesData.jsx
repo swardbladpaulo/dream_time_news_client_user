@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
-import { getArticleData } from "../modules/articlesData";
-import { Card, Image } from "semantic-ui-react";
+import React, { useState, useEffect } from 'react';
+import { getArticleData } from '../modules/articlesData';
+import { Card } from 'semantic-ui-react';
 
 const DisplayArticlesData = () => {
   const [articlesData, setArticlesData] = useState([]);
@@ -20,10 +20,10 @@ const DisplayArticlesData = () => {
           <Card.Header
             data-cy="title"
             style={{
-              fontWeight: "bold",
+              fontWeight: 'bold',
               fontSize: 30,
-              color: "black",
-              textAlign: "center",
+              color: 'black',
+              textAlign: 'center',
             }}
           >
             {article.title}
@@ -31,37 +31,23 @@ const DisplayArticlesData = () => {
           <Card.Meta
             data-cy="sub-title"
             style={{
-              fontWeight: "bold",
+              fontWeight: 'bold',
               fontSize: 20,
-              color: "black",
-              textAlign: "center",
+              color: 'black',
+              textAlign: 'center',
             }}
           >
             {article.sub_title}
           </Card.Meta>
-          <Image
-            data-cy="image"
-            size="small"
-            wrapped
-            ui={false}
-            src={article.image}
-          />
           <Card.Description
             data-cy="content"
-            style={{ fontWeight: "small", fontSize: 15, color: "black" }}
+            style={{ fontWeight: 'small', fontSize: 15, color: 'black' }}
           >
             {article.content}
           </Card.Description>
-          <Card.Meta 
-            data-cy="author"
-            >
-            {article.author}
-          </Card.Meta>
-          <Card.Meta 
-            data-cy="date"
-            >
-            {article.date}
-          </Card.Meta>
+          <Card.Meta data-cy="author-email">{article.author}</Card.Meta>
+          <Card.Meta data-cy="created-at">{`Created at: ${article.created_at}`}</Card.Meta>
+          <Card.Meta data-cy="updated-at">{`Updated at: ${article.updated_at}`}</Card.Meta>
         </Card.Content>
       </Card>
     );
