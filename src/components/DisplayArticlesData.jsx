@@ -1,8 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { getArticleData } from '../modules/articlesData';
-import { Card } from 'semantic-ui-react';
+import { Button, Card } from 'semantic-ui-react';
 
 const DisplayArticlesData = () => {
+
+  const onHandleSubmit = async () => {
+    
+  }
+
   const [articlesData, setArticlesData] = useState([]);
   const getArticles = async () => {
     let result = await getArticleData();
@@ -48,6 +53,10 @@ const DisplayArticlesData = () => {
           <Card.Meta data-cy="author-email">{article.author}</Card.Meta>
           <Card.Meta data-cy="created-at">{`Created at: ${article.created_at}`}</Card.Meta>
           <Card.Meta data-cy="updated-at">{`Updated at: ${article.updated_at}`}</Card.Meta>
+          <Button 
+            data-cy="read-me-button"
+            onClick={onHandleSubmit}
+          >Read More!</Button>
         </Card.Content>
       </Card>
     );
