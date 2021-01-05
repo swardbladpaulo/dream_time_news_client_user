@@ -1,12 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import { getArticleData } from '../modules/articlesData';
+import { getArticleData, getSpecificArticle } from '../modules/articlesData';
 import { Button, Card } from 'semantic-ui-react';
 
 const DisplayArticlesData = () => {
+  const [singleArticle, setSingleArticle] = useState()
+  const fetchSingleArticle = (async (id) => {
+    let response = await getSpecificArticle(id)
+    setSingleArticle(response.data.article)
+  }, [])
 
-  const onHandleSubmit = async () => {
-    
-  }
+  // const fetchSingleArticle = (async (articleId) => {
+  //   let response = await Axios.get(`/articles/${articleId}`)
+  //   setSingleArticle(response.data.article)
+  // })
 
   const [articlesData, setArticlesData] = useState([]);
   const getArticles = async () => {
@@ -55,7 +61,7 @@ const DisplayArticlesData = () => {
           <Card.Meta data-cy="updated-at">{`Updated at: ${article.updated_at}`}</Card.Meta>
           <Button 
             data-cy="read-me-button"
-            onClick={onHandleSubmit}
+            onClick={() => setSingleArticle}
           >Read More!</Button>
         </Card.Content>
       </Card>
