@@ -65,23 +65,21 @@ const DisplayArticlesData = () => {
     );
   });
 
-  let articleDetails = singleArticle.map(article => {
-    return (
-      <>
-        <p data-cy="article-title">{article.title}</p>
-        <p data-cy="article-sub-title">{article.sub_title}</p>
-        <p data-cy="article-content">{article.content}</p>
-        <p data-cy="article-created-at">{article.created_at}</p>
-        <p data-cy="article-updated-at">{article.updated_at}</p>
-        <p data-cy="article-author">{article.author}</p>
-      </>
-    )
-  })
-
   return (
     <>
-      {articlesData.length > 0 && articleDetails.length === 0 && <div data-cy="index">{articleIndex}</div>}
-      {articleDetails && <div data-cy="article-details">{articleDetails}</div>}
+      {/* {articlesData.length > 0 && singleArticle.length === 0 && <div data-cy="index">{articleIndex}</div>}
+      {singleArticle && <div data-cy="article-details">{singleArticle}</div>} */}
+      {articlesData.length > 0 && singleArticle.length === 0 && <div data-cy="index">{articleIndex}</div>}
+      {singleArticle &&
+        <>
+          <p data-cy="article-title">{singleArticle.title}</p>
+          <p data-cy="article-sub-title">{singleArticle.sub_title}</p>
+          <p data-cy="article-content">{singleArticle.content}</p>
+          <p data-cy="article-created-at">{singleArticle.created_at}</p>
+          <p data-cy="article-updated-at">{singleArticle.updated_at}</p>
+          <p data-cy="article-author">{singleArticle.author}</p>
+        </>
+      }
     </>
   );
 };
