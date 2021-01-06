@@ -3,16 +3,12 @@ import { getArticleData, getSpecificArticle } from '../modules/articlesData';
 import { Button, Card } from 'semantic-ui-react';
 
 const DisplayArticlesData = () => {
-  const [singleArticle, setSingleArticle] = useState()
-  const fetchSingleArticle = (async (id) => {
+  const [singleArticle, setSingleArticle] = useState([])
+  const fetchSingleArticle = async (event) => {
+    let id = event.target.dataset.id
     let response = await getSpecificArticle(id)
     setSingleArticle(response.data.article)
-  }, [])
-
-  // const fetchSingleArticle = (async (articleId) => {
-  //   let response = await Axios.get(`/articles/${articleId}`)
-  //   setSingleArticle(response.data.article)
-  // })
+  }
 
   const [articlesData, setArticlesData] = useState([]);
   const getArticles = async () => {
@@ -59,17 +55,34 @@ const DisplayArticlesData = () => {
           <Card.Meta data-cy="author-email">{article.author}</Card.Meta>
           <Card.Meta data-cy="created-at">{`Created at: ${article.created_at}`}</Card.Meta>
           <Card.Meta data-cy="updated-at">{`Updated at: ${article.updated_at}`}</Card.Meta>
-          <Button 
-            data-cy="read-me-button"
-            onClick={() => setSingleArticle}
+          <Button
+            data-id={article.id}
+            data-cy={`read-me-button${article.id}`}
+            onClick={(event) => fetchSingleArticle(event)}
           >Read More!</Button>
         </Card.Content>
-      </Card>
+      </Card >
     );
   });
 
+  let articleDetails = singleArticle.map(article => {
+    return (
+      <>
+        <p data-cy="article-title">{article.title}</p>
+        <p data-cy="article-sub-title">{article.sub_title}</p>
+        <p data-cy="article-content">{article.content}</p>
+        <p data-cy="article-created-at">{article.created_at}</p>
+        <p data-cy="article-updated-at">{article.updated_at}</p>
+        <p data-cy="article-author">{article.author}</p>
+      </>
+    )
+  })
+
   return (
-    <>{articlesData.length > 0 && <div data-cy="index">{articleIndex}</div>}</>
+    <>
+      {articlesData.length > 0 && articleDetails.length === 0 && <div data-cy="index">{articleIndex}</div>}
+      {articleDetails && <div data-cy="article-details">{articleDetails}</div>}
+    </>
   );
 };
 
