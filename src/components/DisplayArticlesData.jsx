@@ -3,6 +3,7 @@ import { getArticleData, getSpecificArticle } from '../modules/articlesData';
 import ArticleCard from './ArticleCard';
 import SingleArticle from './SingleArticle';
 import { useSelector, useDispatch } from 'react-redux';
+import { Card } from 'semantic-ui-react';
 
 const DisplayArticlesData = () => {
   const dispatch = useDispatch();
@@ -28,12 +29,12 @@ const DisplayArticlesData = () => {
   return (
     <>
       {articles.length > 0 && !singleArticle && (
-        <div data-cy="index">
+        <Card.Group data-cy="index" itemsPerRow={3}>
           <ArticleCard
             articles={articles}
             fetchSingleArticle={fetchSingleArticle}
           />
-        </div>
+        </Card.Group>
       )}
       <SingleArticle singleArticle={singleArticle} getArticles={getArticles} />
     </>

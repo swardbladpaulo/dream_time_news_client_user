@@ -1,7 +1,7 @@
-import axios from "axios";
+import axios from 'axios';
 
 const getArticleData = async () => {
-  const response = await axios.get("/articles");
+  const response = await axios.get('/articles');
   return response;
 };
 
