@@ -3,7 +3,7 @@ import { getArticleData, getSpecificArticle } from '../modules/articlesData';
 import { Button, Card } from 'semantic-ui-react';
 
 const DisplayArticlesData = () => {
-  const [singleArticle, setSingleArticle] = useState([])
+  const [singleArticle, setSingleArticle] = useState()
   const fetchSingleArticle = async (event) => {
     let id = event.target.dataset.id
     let response = await getSpecificArticle(id)
@@ -14,6 +14,7 @@ const DisplayArticlesData = () => {
   const getArticles = async () => {
     let result = await getArticleData();
     setArticlesData(result.data.articles);
+    setSingleArticle()
   };
 
   useEffect(() => {
@@ -67,9 +68,7 @@ const DisplayArticlesData = () => {
 
   return (
     <>
-      {/* {articlesData.length > 0 && singleArticle.length === 0 && <div data-cy="index">{articleIndex}</div>}
-      {singleArticle && <div data-cy="article-details">{singleArticle}</div>} */}
-      {articlesData.length > 0 && singleArticle.length === 0 && <div data-cy="index">{articleIndex}</div>}
+      {articlesData.length > 0 && !singleArticle && <div data-cy="index">{articleIndex}</div>}
       {singleArticle &&
         <>
           <p data-cy="article-title">{singleArticle.title}</p>
@@ -78,6 +77,7 @@ const DisplayArticlesData = () => {
           <p data-cy="article-created-at">{singleArticle.created_at}</p>
           <p data-cy="article-updated-at">{singleArticle.updated_at}</p>
           <p data-cy="article-author">{singleArticle.author}</p>
+          <button data-cy="back-button" onClick={() => getArticles()}>back</button>
         </>
       }
     </>

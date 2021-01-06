@@ -29,5 +29,7 @@ describe("visitor can read one article", () => {
       "contain",
       "journalist@mail.com"
     );
+    cy.get("[data-cy='back-button']").click()
+    cy.get("[data-cy='index']").should("exist")
   });
 });
