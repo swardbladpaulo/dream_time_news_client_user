@@ -40,7 +40,7 @@ describe("Visitor can see list of articles", () => {
     });
 
     it("unsuccessfully view all listed articles", () => {
-      cy.get('[data-cy="index"]').should("not.exist");
+      cy.get('[data-cy="index"]').should("not.be.visible");
     });
   });
 });

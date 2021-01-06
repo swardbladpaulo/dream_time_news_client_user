@@ -1,8 +1,8 @@
 import React from "react";
 import { Button, Card } from "semantic-ui-react";
 
-const ArticleCard = () => {
-  let articleIndex = articlesData.map((article) => {
+const ArticleCard = ({ articles }) => {
+  let articleIndex = articles.map((article) => {
     return (
       <Card key={article.id} data-cy={`article-${article.id}`}>
         <Card.Content>
@@ -37,14 +37,18 @@ const ArticleCard = () => {
           <Card.Meta data-cy="author-email">{article.author}</Card.Meta>
           <Card.Meta data-cy="created-at">{`Created at: ${article.created_at}`}</Card.Meta>
           <Card.Meta data-cy="updated-at">{`Updated at: ${article.updated_at}`}</Card.Meta>
-          <Button data-cy="read-me-button" onClick={() => setSingleArticle}>
-            Read More!
-          </Button>
+          {/* <Button data-cy="read-me-button" onClick={() => setSingleArticles}>
+          Read More!
+        </Button> */}
         </Card.Content>
       </Card>
     );
   });
-  return { articleIndex };
+  return (
+    <>
+    {articleIndex && articleIndex}
+    </>
+  )
 };
 
 export default ArticleCard;
