@@ -1,27 +1,27 @@
-import React, { useState, useEffect } from "react";
-import { getArticleData, getSpecificArticle } from "../modules/articlesData";
+import React, { useEffect } from 'react';
+import { getArticleData, getSpecificArticle } from '../modules/articlesData';
 // import { Button, Card } from 'semantic-ui-react';
-import ArticleCard from "./ArticleCard";
-import SingleArticle from "./SingleArticle";
-import { useSelector, useDispatch } from "react-redux";
+import ArticleCard from './ArticleCard';
+import SingleArticle from './SingleArticle';
+import { useSelector, useDispatch } from 'react-redux';
 
 const DisplayArticlesData = () => {
   const dispatch = useDispatch();
   const articles = useSelector((state) => state.articlesIndex);
-  // const [articlesData, setArticlesData] = useState([]);
+  const singleArticle = useSelector((state) => state.singleArticle);
+
   const getArticles = async () => {
-    let result = await getArticleData();
-    dispatch({ type: "SET_ARTICLES_INDEX", payload: result.data.articles });
+    const result = await getArticleData();
+    dispatch({ type: 'SET_ARTICLES_INDEX', payload: result.data.articles });
     // setArticlesData(result.data.articles);
     // setSingleArticle();
   };
 
-  // const [singleArticle, setSingleArticle] = useState();
-  // const fetchSingleArticle = async (event) => {
-  //   let id = event.target.dataset.id;
-  //   let response = await getSpecificArticle(id);
-  //   setSingleArticle(response.data.article);
-  // };
+  const fetchSingleArticle = async (event) => {
+    let id = event.target.dataset.id;
+    const response = await getSpecificArticle(id);
+    dispatch({ type: 'SET_SINGLE_ARTICLE', payload: response.data.article });
+  };
 
   useEffect(() => {
     getArticles();
@@ -37,11 +37,14 @@ const DisplayArticlesData = () => {
       )} */}
 
       <div data-cy="index">
-        <ArticleCard articles={articles} />
+        <ArticleCard articles={articles}
+        fetchSingleArticle={fetchSingleArticle} />
         {/* <ArticleCard /> */}
       </div>
-      {/* {
-        singleArticle && <SingleArticle />
+      {
+        <SingleArticle singleArticle={singleArticle}
+        getArticles={getArticles} />
+
         // <>
         //   <p data-cy="article-title">{singleArticle.title}</p>
         //   <p data-cy="article-sub-title">{singleArticle.sub_title}</p>
@@ -51,7 +54,7 @@ const DisplayArticlesData = () => {
         //   <p data-cy="article-author">{singleArticle.author}</p>
         //   <button data-cy="back-button" onClick={() => getArticles()}>back</button>
         // </>
-      } */}
+      }
     </>
   );
 };
