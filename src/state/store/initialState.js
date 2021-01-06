@@ -1,5 +1,5 @@
 const initialState = {
-  articlesIndex: []
-}
+  articlesIndex: [],
+};
 
-export default initialState
+export default initialState;

@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 describe("visitor can read one article", () => {
   beforeEach(() => {
     cy.server();
