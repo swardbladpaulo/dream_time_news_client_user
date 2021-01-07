@@ -6,6 +6,8 @@ import axios from 'axios';
 import store from './state/store/configureStore';
 import { Provider } from 'react-redux';
 import 'semantic-ui-css/semantic.min.css';
+import { BrowserRouter } from "react-router-dom"
+
 
 axios.defaults.baseURL =
   process.env.NODE_ENV === 'production'
@@ -16,7 +18,10 @@ window.store = store;
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <BrowserRouter> 
+      <App />
+    </BrowserRouter>
+   
   </Provider>,
   document.getElementById('root')
 );
