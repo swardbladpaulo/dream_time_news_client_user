@@ -1,5 +1,4 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
 import { Button, Grid } from 'semantic-ui-react';
 import { getArticleData } from '../modules/articlesData';
 import { useDispatch, useSelector } from "react-redux"
@@ -29,7 +28,7 @@ const SingleArticle = () => {
               <p data-cy="article-author">{singleArticle.author}</p>
             </Grid.Column>
           </Grid>
-          <Button data-cy="back-button" onClick={() => getArticles()}>
+          <Button data-cy="back-button" onClick={() => getArticleData()}>
             back
           </Button>
         </>

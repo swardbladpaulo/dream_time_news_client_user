@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
-import { getArticleData, getSpecificArticle } from '../modules/articlesData';
+import { getArticleData } from '../modules/articlesData';
 import ArticleCard from './ArticleCard';
-import SingleArticle from './SingleArticle';
+// import SingleArticle from './SingleArticle';
 import { useSelector, useDispatch } from 'react-redux';
 import { Card } from 'semantic-ui-react';
 
@@ -26,17 +26,30 @@ const DisplayArticlesData = () => {
   //   getArticles();
   // }, []);
 
+  const dispatch = useDispatch() 
+  const { mainArticles } = useSelector(state => state)
+
+  useEffect(() => {
+    getArticleData.index(dispatch)
+  }, [dispatch])
+
+  let articleIndex;
+  articleIndex = (
+    <Card.Group itemsPerRow={3}>
+    {mainArticles.map((article) => {
+      return <ArticleCard article={{ ...article }} />
+    })
+    }
+    </Card.Group>
+  )
+
   return (
     <>
-      {articles.length > 0 && !singleArticle && (
-        <Card.Group data-cy="index" itemsPerRow={3}>
-          <ArticleCard
-            articles={articles}
-            fetchSingleArticle={fetchSingleArticle}
-          />
-        </Card.Group>
+      {/* {articlesIndex.length > 0 && !singleArticle && ( */}
+      {mainArticles.length > 0 && (
+        <ul data-cy="index">{articleIndex}</ul>
       )}
-      <SingleArticle singleArticle={singleArticle} getArticles={getArticles} />
+      {/* <SingleArticle  /> */}
     </>
   );
 };

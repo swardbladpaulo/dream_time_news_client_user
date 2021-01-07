@@ -5,7 +5,7 @@ const rootReducer = (state = initialState, action) => {
     case "SET_ARTICLES_INDEX":
       return {
         ...state,
-        articlesIndex: action.payload,
+        mainArticles: action.payload,
       };
 
     case "SET_SINGLE_ARTICLE":

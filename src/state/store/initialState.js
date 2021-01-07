@@ -1,5 +1,5 @@
 const initialState = {
-  articlesIndex: [],
+  mainArticles: [],
   singleArticle: {},
 };
 
