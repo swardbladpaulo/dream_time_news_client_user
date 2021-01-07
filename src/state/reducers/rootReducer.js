@@ -13,6 +13,12 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         singleArticle: action.payload,
       };
+
+    case "ERROR_MESSAGE":
+      return {
+        ...state,
+        errorMessage: action.payload,
+      };
     default:
       return state;
   }
