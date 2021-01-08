@@ -21,7 +21,6 @@ describe("Visitor can see list of articles", () => {
             cy.get('[data-cy="created-at"]').should("exist");
             cy.get('[data-cy="updated-at"]').should("exist");
             cy.get('[data-cy="author-email"]').should("exist");
-
           });
         });
       });
@@ -40,7 +39,7 @@ describe("Visitor can see list of articles", () => {
     });
 
     it("unsuccessfully view all listed articles", () => {
-      cy.get('[data-cy="index"]').should("not.exist");
+      cy.get('[data-cy="index"]').should("not.be.visible");
     });
   });
 });
