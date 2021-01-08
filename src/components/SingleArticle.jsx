@@ -1,17 +1,16 @@
 import React, { useEffect } from "react";
 import { Button, Container, Grid } from "semantic-ui-react";
 import { getArticleData } from "../modules/articlesData";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { NavLink, useParams } from "react-router-dom";
 
 const SingleArticle = () => {
-  const dispatch = useDispatch();
   const { singleArticle, errorMessage } = useSelector((state) => state);
   const { id } = useParams();
 
   useEffect(() => {
-    getArticleData.show(id, dispatch);
-  }, [id, dispatch]);
+    getArticleData.show(id);
+  }, [id]);
   return (
     <>
       <Grid>
@@ -26,9 +25,8 @@ const SingleArticle = () => {
           <p data-cy="article-author">{singleArticle.author}</p>
         </Grid.Column>
       </Grid>
-
       <Button data-cy="back-button" as={NavLink} to="/">
-        back
+        Back
       </Button>
       {errorMessage && (
         <Container data-cy="error-message-article">

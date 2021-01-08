@@ -39,7 +39,7 @@ describe("visitor can read one article", () => {
       cy.server();
       cy.route({
         method: "GET",
-        url: "http://localhost:3000/api/articles/2",
+        url: "http://localhost:3000/api/articles/**",
         response: {
           message: "Article was not found",
         },
@@ -49,7 +49,10 @@ describe("visitor can read one article", () => {
       cy.get("[data-cy='read-me-button2']").click();
     });
     it("and is presented with an error message", () => {
-      cy.get("[data-cy='error-message-article']").should("contain", "Article");
+      cy.get("[data-cy='error-message-article']").should(
+        "contain",
+        "Article was not found"
+      );
     });
   });
 });

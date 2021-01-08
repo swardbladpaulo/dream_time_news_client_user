@@ -1,16 +1,15 @@
 import React, { useEffect } from "react";
 import { getArticleData } from "../modules/articlesData";
 import ArticleCard from "./ArticleCard";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { Card } from "semantic-ui-react";
 
 const DisplayArticlesData = () => {
-  const dispatch = useDispatch();
   const { mainArticles } = useSelector((state) => state);
 
   useEffect(() => {
-    getArticleData.index(dispatch);
-  }, [dispatch]);
+    getArticleData.index();
+  }, []);
 
   let articleIndex;
   articleIndex = (
@@ -22,7 +21,7 @@ const DisplayArticlesData = () => {
   );
 
   return (
-    <>{mainArticles.length > 0 && <ul data-cy="index">{articleIndex}</ul>}</>
+    <>{mainArticles.length > 0 && <div data-cy="index">{articleIndex}</div>}</>
   );
 };
 
