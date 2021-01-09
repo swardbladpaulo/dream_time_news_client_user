@@ -4,7 +4,7 @@ import { Button, Form, Icon } from "semantic-ui-react";
 const RegistrationForm = () => {
   return (
     <div>
-      <Form data-cy="registration-form">
+      <Form data-cy='registration-form'>
         <Form.Input
           icon="at"
           type="text"
