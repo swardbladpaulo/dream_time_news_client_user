@@ -6,6 +6,7 @@ const Header = () => {
   const currentUser = useSelector((state) => state.currentUser);
 
   const auth = useSelector((state) => state.auth);
+  
   const [selectRegisterForm, setRegisterForm] = useState();
   const onHandleSubmit = async (e) => {
     let selection = await RegistrationForm();

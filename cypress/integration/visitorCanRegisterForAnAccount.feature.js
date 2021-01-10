@@ -3,7 +3,7 @@ describe("User can register", () => {
     cy.server();
     cy.route({
       method: "POST",
-      url: "http://localhost:3000/api/auth/sign_in",
+      url: "http://localhost:3000/api/auth/sign_up",
       response: "fx:visitor_can_register.json",
       headers: {
         uid: "user@mail.com",

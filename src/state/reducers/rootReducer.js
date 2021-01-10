@@ -14,12 +14,19 @@ const rootReducer = (state = initialState, action) => {
         singleArticle: action.payload,
       };
 
-      case "SET_CURRENT_USER":
+      case "AUTHENTICATE_USER":
         return {
           ...state,
-          currentUser: action.payload,
+          authenticatedUser: action.payload,
           auth: { message: "You are logged in", status: true},
         };
+
+        case "CURRENT_USER":
+          return {
+            ...state,
+            currentUser: action.payload,
+            auth: { message: "You are logged in", status: true},
+          };
 
     case "ERROR_MESSAGE":
       return {
