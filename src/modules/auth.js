@@ -9,7 +9,7 @@ const performAuthentication = async (e, dispatch) => {
   try {
     e.preventDefault();
 
-    let response = await auth.signIn(
+    let response = await auth.signUp(
       e.target.elements.email.value,
       e.target.elements.password.value,
       e.target.elements.password_confirmation.value

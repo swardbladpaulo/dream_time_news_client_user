@@ -4,14 +4,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { performAuthentication } from "../modules/auth";
 
 const RegistrationForm = () => {
-const dispatch = useDispatch()
-const errorMessage =  useSelector(state => state.errorMessage)
+// const dispatch = useDispatch()
+// const errorMessage =  useSelector(state => state.errorMessage)
   return (
     <div>
       <Form 
-      name="registrationForm"
+      //name="registrationForm"
       data-cy='registration-form' 
-      onSubmit={(event) => performAuthentication(event, dispatch)}
+      // onSubmit={(event) => performAuthentication(event, dispatch)}
       >
         <Form.Input
           icon="at"
