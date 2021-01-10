@@ -1,9 +1,10 @@
 import React from "react";
 import { Button, Form, Icon } from "semantic-ui-react";
 import { auth } from "../modules/auth";
+import { useDispatch } from "react-redux";
 
 const RegistrationForm = () => {
-
+const dispatch = useDispatch()
   return (
     <div>
       <Form data-cy='registration-form' onSubmit={()=> performAuthentication()}>
