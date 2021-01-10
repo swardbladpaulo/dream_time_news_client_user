@@ -13,6 +13,13 @@ describe("User can register", () => {
         expiry: 100008,
       },
     });
+    /*is for the path way from the test since we visit the mainpage in app witch trigger get all the articles.
+    need to be removed when we are finish with header.*/
+    cy.route({
+      method: "GET",
+      url: "http://localhost:3000/api/articles",
+      response: "fixture:articles_data.json",
+    });
     cy.visit("/");
   });
 
@@ -26,17 +33,20 @@ describe("User can register", () => {
     });    
   });
 
-  it('sad path: unsuccessful register', () => {
-    cy.route({
-      method: "POST",
-      url: "http://localhost:3000/api/auth",
-      status: "401",
-      response: {
-        errors: ["Registration failed, please try again"],
-        success: false,
-      },
-    });
+  describe ('sad path: unsuccessful register', () => {
+    beforeEach(() => {
+      cy.route({
+        method: "POST",
+        url: "http://localhost:3000/api/auth",
+        status: "401",
+        response: {
+          errors: ["Registration failed, please try again"],
+          success: false,
+        },
+      });
+    })
 
+    it('unsuccessful registration', () => {
     cy.get("[data-cy='register-btn']").click();
     cy.get("[data-cy='registration-form']").within(() => {
       cy.get("[data-cy='email']").type("user@mail.com");
@@ -45,7 +55,7 @@ describe("User can register", () => {
       cy.get("[data-cy='submit-btn']").click();
     });
     cy.get("[data-cy='error-confirmation-message']").contains(
-      "Registration failed, please try again"
-    );
+      "Registration failed, please try again" 
+    )});
   });
 });

@@ -16,13 +16,13 @@ const App = () => {
       <h1>Hello Dream Time News!</h1>
 
       <button data-cy='register-btn' onClick={(e) => onHandleSubmit()}>Register here!</button>
-
-      <Switch>
-        <Route exact path="/" component={DisplayArticlesData}></Route>
-        <Route exact path="/articles/:id" component={SingleArticle}></Route> 
-      </Switch>
-
       {selectRegisterForm}
+        <Switch>
+          <Route exact path="/" component={DisplayArticlesData}></Route>
+          <Route exact path="/articles/:id" component={SingleArticle}></Route> 
+        </Switch>
+      
+      
       
     </>
   );
