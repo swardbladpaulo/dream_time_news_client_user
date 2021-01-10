@@ -1,7 +1,5 @@
 import JtockAuth from "j-tockauth";
 
-import React from "react";
-
 const auth = new JtockAuth({
   host: "http://localhost:3000",
   prefixUrl: "/api",
@@ -10,7 +8,7 @@ const auth = new JtockAuth({
 const performAuthentication = async (e, dispatch) => {
   try {
     e.preventDefault();
-    
+
     let response = await auth.signIn(
       e.target.elements.email.value,
       e.target.elements.password.value,
@@ -29,8 +27,7 @@ const performAuthentication = async (e, dispatch) => {
       });
       localStorage.removeItem("J-tockAuth-Storage");
     }
-  }
-   catch (error) {
+  } catch (error) {
     console.log(error);
     dispatch({
       type: "SET_ERROR_MESSAGE",
