@@ -28,6 +28,8 @@ const SingleArticle = () => {
       <Button data-cy="back-button" as={NavLink} to="/">
         Back
       </Button>
+      <Button data-cy='register-btn' onClick={(e) => onHandleSubmit()}>Register here!</Button>
+      {selectRegisterForm}
       {errorMessage && (
         <Container data-cy="error-message-article">
           <h1>{errorMessage}</h1>

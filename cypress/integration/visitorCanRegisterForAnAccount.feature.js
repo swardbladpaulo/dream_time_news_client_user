@@ -13,8 +13,8 @@ describe("User can register", () => {
     need to be removed when we are finish with header.*/
     cy.route({
       method: "GET",
-      url: "http://localhost:3000/api/auth/validate_token**",
-      response: "fx:visitor_can_register.json",
+      url: "http://localhost:3000/api/articles",
+      response: "fx:articles_data.json",
     });
     cy.visit("/");
   });

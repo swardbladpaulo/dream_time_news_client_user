@@ -18,8 +18,8 @@ const App = () => {
     <>
       <h1>Hello Dream Time News!</h1>
 
-      <button data-cy='register-btn' onClick={(e) => onHandleSubmit()}>Register here!</button>
-      {selectRegisterForm}
+      {/* <button data-cy='register-btn' onClick={(e) => onHandleSubmit()}>Register here!</button>
+      {selectRegisterForm} */}
       <Header />
         <Switch>
           <Route exact path="/" component={DisplayArticlesData}></Route>

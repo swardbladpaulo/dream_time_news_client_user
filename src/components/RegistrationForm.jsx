@@ -1,13 +1,18 @@
 import React from "react";
 import { Button, Form, Icon } from "semantic-ui-react";
-import { auth } from "../modules/auth";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { performAuthentication } from "../modules/auth";
 
 const RegistrationForm = () => {
 const dispatch = useDispatch()
+const errorMessage =  useSelector(state => state.errorMessage)
   return (
     <div>
-      <Form data-cy='registration-form' onSubmit={()=> performAuthentication()}>
+      <Form 
+      name="registrationForm"
+      data-cy='registration-form' 
+      onSubmit={(event) => performAuthentication(event, dispatch)}
+      >
         <Form.Input
           icon="at"
           type="text"
