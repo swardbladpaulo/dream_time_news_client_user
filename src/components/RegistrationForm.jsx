@@ -37,6 +37,7 @@ const RegistrationForm = () => {
           <Icon name="user"></Icon>
           Register
         </Button>
+
       </Form>
     </div>
   );
