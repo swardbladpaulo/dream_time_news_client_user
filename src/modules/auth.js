@@ -25,6 +25,8 @@ const performAuthentication = async (e) => {
       localStorage.removeItem("J-tockAuth-Storage");
     }
   } catch (error) {
+    debugger
+    console.log(error);
     store.dispatch({
       type: "SET_ERROR_MESSAGE",
       payload: error.response.data.errors[0],
