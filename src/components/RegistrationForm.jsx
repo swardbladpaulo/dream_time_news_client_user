@@ -1,10 +1,12 @@
 import React from "react";
 import { Button, Form, Icon } from "semantic-ui-react";
+import { auth } from "../modules/auth";
 
 const RegistrationForm = () => {
+
   return (
     <div>
-      <Form data-cy='registration-form'>
+      <Form data-cy='registration-form' onSubmit={()=> performAuthentication()}>
         <Form.Input
           icon="at"
           type="text"
