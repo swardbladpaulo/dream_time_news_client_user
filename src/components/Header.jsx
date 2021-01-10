@@ -5,7 +5,7 @@ import RegistrationForm from './RegistrationForm';
 const Header = () => {
   const currentUser = useSelector((state) => state.currentUser);
 
-  const auth = useSelector((state) => state.auth);
+  const authenticatedUser = useSelector((state) => state.authenticatedUser);
 
   const [selectRegisterForm, setRegisterForm] = useState(false);
 
@@ -20,7 +20,7 @@ const Header = () => {
         Register here!
       </button>
       {selectRegisterForm && <RegistrationForm />}
-      {auth && auth.message}
+      {authenticatedUser && authenticatedUser.message}
     </>
   );
 };

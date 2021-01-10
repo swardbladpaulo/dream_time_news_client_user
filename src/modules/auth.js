@@ -19,14 +19,14 @@ const performAuthentication = async (e) => {
       store.dispatch({
         type: 'SET_CURRENT_USER',
         payload: response.data,
-      });
+      });debugger
     } else {
       store.dispatch({
         type: 'SET_ERROR_MESSAGE',
         payload: 'Registration unsuccessful',
       });
       localStorage.removeItem('J-tockAuth-Storage');
-    }
+    } 
   } catch (error) {
     store.dispatch({
       type: 'SET_ERROR_MESSAGE',
@@ -36,3 +36,4 @@ const performAuthentication = async (e) => {
 };
 
 export default performAuthentication;
+

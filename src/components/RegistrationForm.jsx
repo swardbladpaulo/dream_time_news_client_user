@@ -1,17 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button, Form, Icon } from 'semantic-ui-react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import performAuthentication from '../modules/auth';
 
 const RegistrationForm = () => {
-  // const dispatch = useDispatch()
+  const [message, setMessage] = useState(false)  
+
+  const onRegisterSubmit = async (e) => {
+    e.preventDefault();
+    const response = await performAuthentication(e)
+    setMessage(response)
+  }
   const errorMessage = useSelector((state) => state.errorMessage);
+
   return (
     <div>
       <Form
         name="registrationForm"
         data-cy="registration-form"
-        onSubmit={performAuthentication}
+        onSubmit={onRegisterSubmit}
       >
         <Form.Input
           icon="at"
