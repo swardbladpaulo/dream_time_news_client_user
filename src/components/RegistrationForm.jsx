@@ -1,16 +1,10 @@
-import React, { useState } from 'react';
-import { Button, Form, Icon } from 'semantic-ui-react';
-import { useSelector } from 'react-redux';
-import performAuthentication from '../modules/auth';
+import React from "react";
+import { Button, Form, Icon, Message } from "semantic-ui-react";
+import { useDispatch, useSelector } from "react-redux";
+import { performAuthentication } from "../modules/auth";
 
 const RegistrationForm = () => {
-  const [message, setMessage] = useState(false)  
-
-  const onRegisterSubmit = async (e) => {
-    e.preventDefault();
-    const response = await performAuthentication(e)
-    setMessage(response)
-  }
+  const dispatch = useDispatch();
   const errorMessage = useSelector((state) => state.errorMessage);
 
   return (
@@ -18,7 +12,7 @@ const RegistrationForm = () => {
       <Form
         name="registrationForm"
         data-cy="registration-form"
-        onSubmit={onRegisterSubmit}
+        onSubmit={(e) => performAuthentication(e, dispatch)}
       >
         <Form.Input
           icon="at"
@@ -52,8 +46,9 @@ const RegistrationForm = () => {
           <Icon name="user"></Icon>
           Register
         </Button>
-
-        <p>{errorMessage}</p>
+        {errorMessage && (
+          <Message data-cy="error-message">{errorMessage}</Message>
+        )}
       </Form>
     </div>
   );

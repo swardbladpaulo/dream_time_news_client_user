@@ -3,34 +3,33 @@ describe("User can register", () => {
     cy.server();
     cy.route({
       method: "POST",
-      url: "http://localhost:3000/api/auth/sign_up",
-      response: "fx:visitor_can_register.json",
+      url: "http://localhost:3000/api/auth/**",
+      response: "fixture:visitor_can_register.json",
       headers: {
-        uid: "user@mail.com",
+        uid: "registered_user@user.com",
       },
     });
-    /*is for the path way from the test since we visit the mainpage in app witch trigger get all the articles.
-    need to be removed when we are finish with header.*/
+
     cy.route({
       method: "GET",
       url: "http://localhost:3000/api/articles",
-      response: "fx:articles_data.json",
+      response: "fixture:articles_data.json",
     });
     cy.visit("/");
   });
 
-  it.only("successfully with valid credentials", () => {
+  it.only("successful registration", () => {
     cy.get("[data-cy='register-btn']").click();
     cy.get("[data-cy='registration-form']").within(() => {
-      cy.get("[data-cy='email']").type("user@mail.com");
-      cy.get("[data-cy='password']").type("password");
-      cy.get("[data-cy='password-confirmation']").type("password");
+      cy.get("[data-cy='email']").type("registered_user@user.com");
+      cy.get("[data-cy='password']").type("123456");
+      cy.get("[data-cy='password-confirmation']").type("123456");
       cy.get("[data-cy='submit-btn']").click();
     });
-    cy.get("[data-cy='header-user-email']").should(
-      "contain",
-      "Logged in as user@mail.com"
-    );
+    // cy.get("[data-cy='header-user-email']").should(
+    //   "contain",
+    //   "Logged in as registered_user@mail.com"
+    // );
   });
 
   describe("sad path: unsuccessful register", () => {
@@ -50,8 +49,8 @@ describe("User can register", () => {
       cy.get("[data-cy='register-btn']").click();
       cy.get("[data-cy='registration-form']").within(() => {
         cy.get("[data-cy='email']").type("user@mail.com");
-        cy.get("[data-cy='password']").type("wrongpassword");
-        cy.get("[data-cy='password-confirmation']").type("password");
+        cy.get("[data-cy='password']").type("password");
+        cy.get("[data-cy='password-confirmation']").type("wrongpassword");
         cy.get("[data-cy='submit-btn']").click();
       });
       // cy.get("[data-cy='error-confirmation-message']").contains(

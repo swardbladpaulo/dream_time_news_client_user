@@ -1,10 +1,9 @@
 {
-  "status": "success",
   "data": {
     "id":2509,
-    "email": "registered@user.com",
+    "email": "registered_user@user.com",
     "provider": "email",
-    "uid": "registered@user.com",
+    "uid": "registered_user@user.com",
     "name": "user",
     "password": "123456",
     "password_confirmation": "123456",
@@ -12,3 +11,4 @@
     "role": "registered_user"
   }
 }
+

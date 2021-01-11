@@ -1,39 +1,43 @@
 import JtockAuth from 'j-tockauth';
-import store from '../state/store/configureStore';
+// import store from '../state/store/configureStore';
 
 const auth = new JtockAuth({
   host: 'http://localhost:3000',
   prefixUrl: '/api',
 });
 
-const performAuthentication = async (e) => {
+const performAuthentication = async (e, dispatch) => {
+  debugger
   try {
     e.preventDefault();
-
-    let response = await auth.signUp({
-      email: e.target.elements.email.value,
-      password: e.target.elements.password.value,
-    });
-
+    debugger
+    let response = await auth.signIn(
+    e.target.elements.email.value,
+    e.target.elements.password.value,
+    e.target.elements.password_confirmation.value,
+    );
+debugger
     if (response.data.role === 'registered_user') {
-      store.dispatch({
+      debugger
+      dispatch({
         type: 'SET_CURRENT_USER',
-        payload: response.data,
-      });debugger
+        payload: { auth: true }
+      });
     } else {
-      store.dispatch({
+      dispatch({
         type: 'SET_ERROR_MESSAGE',
         payload: 'Registration unsuccessful',
       });
       localStorage.removeItem('J-tockAuth-Storage');
     } 
   } catch (error) {
-    store.dispatch({
+    debugger
+    dispatch({
       type: 'SET_ERROR_MESSAGE',
-      payload: error.response.data.errors[0],
+      payload: "error bigi",
     });
   }
 };
 
-export default performAuthentication;
+export {performAuthentication};
 
