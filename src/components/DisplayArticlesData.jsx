@@ -21,11 +21,7 @@ const DisplayArticlesData = () => {
   );
 
   return (
-    <>
-      {mainArticles.length > 0 &&
-        <div data-cy="index">{articleIndex}
-        </div>}
-    </>
+    <>{mainArticles.length > 0 && <div data-cy="index">{articleIndex}</div>}</>
   );
 };
 

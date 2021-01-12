@@ -5,6 +5,7 @@ import { performAuthentication } from "../modules/auth";
 
 const RegistrationForm = () => {
   const dispatch = useDispatch();
+  const authenticatedUser = useSelector((state) => state.authenticatedUser);
   const errorMessage = useSelector((state) => state.errorMessage);
 
   return (
@@ -50,6 +51,11 @@ const RegistrationForm = () => {
           <Message data-cy="error-message">{errorMessage}</Message>
         )}
       </Form>
+      {authenticatedUser && (
+        <h3 data-cy="header-user-email">
+          Logged in as {authenticatedUser.email}
+        </h3>
+      )}
     </div>
   );
 };

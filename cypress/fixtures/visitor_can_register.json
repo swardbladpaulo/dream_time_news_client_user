@@ -1,0 +1,14 @@
+{
+  "status": "success",
+  "data": {
+    "id": 2509,
+    "email": "registered_user@mail.com",
+    "provider": "email",
+    "uid": "registered_user@mail.com",
+    "name": "user",
+    "password": "123456789",
+    "password_confirmation": "123456789",
+    "allow_password_change": false,
+    "role": "registered_user"
+  }
+}
