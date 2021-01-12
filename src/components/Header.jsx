@@ -1,14 +1,20 @@
 import React, { useState } from "react";
 import RegistrationForm from "./RegistrationForm";
+import { Button, Image, Menu } from "semantic-ui-react";
+
 
 const Header = () => {
   const [selectRegisterForm, setRegisterForm] = useState(false);
 
   return (
     <>
-      <button data-cy="register-btn" onClick={() => setRegisterForm(true)}>
+    <Menu>
+      <Menu.Item fluid="true"><Image src="./assets/dreamtimesnews.png"/> </Menu.Item>
+      <Menu.Item><Button data-cy="register-btn" onClick={() => setRegisterForm(true)}>
         Register here!
-      </button>
+      </Button>
+      </Menu.Item>
+    </Menu>
 
       {selectRegisterForm && <RegistrationForm />}
     </>

@@ -8,14 +8,14 @@ import Header from "./components/Header";
 const App = () => {
   return (
     <>
-      <h1>Hello Dream Time News!</h1>
+      <Header />
       
       <Switch>
         <Route exact path="/" component={DisplayArticlesData}></Route>
         <Route exact path="/articles/:id" component={SingleArticle}></Route>
         <Route exact path="/sign_up" component={RegistrationForm}></Route>
       </Switch>
-      <Header />
+      
     </>
   );
 };

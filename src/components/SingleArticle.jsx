@@ -12,7 +12,7 @@ const SingleArticle = () => {
     getArticleData.show(id);
   }, [id]);
   return (
-    <>
+    <Container>
       <Grid>
         <Grid.Column width={9}>
           <h1 data-cy="article-title">{singleArticle.title}</h1>
@@ -32,7 +32,7 @@ const SingleArticle = () => {
           <h1>{errorMessage}</h1>
         </Container>
       )}
-    </>
+    </Container>
   );
 };
 
