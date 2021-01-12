@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import RegistrationForm from "./RegistrationForm";
+import RegisterModal from "./RegistrationForm";
 import { Button, Image, Menu } from "semantic-ui-react";
 
 
@@ -9,14 +9,16 @@ const Header = () => {
   return (
     <>
     <Menu>
-      <Menu.Item fluid="true"><Image src="./assets/dreamtimesnews.png"/> </Menu.Item>
-      <Menu.Item><Button data-cy="register-btn" onClick={() => setRegisterForm(true)}>
+      <Menu.Item><Image src="./assets/dreamtimesnews.png"/> </Menu.Item>
+      <Menu.Item><RegisterModal></RegisterModal>
+        
+        {/* <Button data-cy="register-btn" onClick={() => setRegisterForm(true)}>
         Register here!
-      </Button>
+      </Button> */}
       </Menu.Item>
     </Menu>
 
-      {selectRegisterForm && <RegistrationForm />}
+      {/* {selectRegisterForm && <RegisterModal />} */}
     </>
   );
 };

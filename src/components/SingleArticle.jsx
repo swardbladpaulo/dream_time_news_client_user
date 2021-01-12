@@ -24,7 +24,7 @@ const SingleArticle = () => {
           <p data-cy="article-author">{singleArticle.author}</p>
         </Grid.Column>
       </Grid>
-      <Button data-cy="back-button" as={NavLink} to="/">
+      <Button data-cy="back-button" as={NavLink} to="/" color="twitter">
         Back
       </Button>
       {errorMessage && (

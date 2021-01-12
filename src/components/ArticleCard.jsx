@@ -12,7 +12,7 @@ const ArticleCard = ({ article }) => {
             fontWeight: "bold",
             fontSize: 30,
             color: "black",
-            textAlign: "center",
+            textAlign: "left",
           }}
         >
           {article.title}
@@ -23,7 +23,7 @@ const ArticleCard = ({ article }) => {
             fontWeight: "bold",
             fontSize: 20,
             color: "black",
-            textAlign: "center",
+            textAlign: "left",
           }}
         >
           {article.sub_title}
@@ -35,6 +35,7 @@ const ArticleCard = ({ article }) => {
           data-cy={`read-me-button${article.id}`}
           as={NavLink}
           to={`/articles/${article.id}`}
+          color="orange"
         >
           Read More!
         </Button>
