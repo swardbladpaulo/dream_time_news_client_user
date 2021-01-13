@@ -1,19 +1,13 @@
 import React from "react";
-import { Button, Form, Icon, Message } from "semantic-ui-react";
-import { useDispatch, useSelector } from "react-redux";
-import { performAuthentication } from "../modules/auth";
+import { Form, Icon } from "semantic-ui-react";
 
-const RegistrationForm = () => {
-  const dispatch = useDispatch();
-  const authenticatedUser = useSelector((state) => state.authenticatedUser);
-  const errorMessage = useSelector((state) => state.errorMessage);
-
+const RegistrationForm = (props) => {
   return (
-    <div>
+    <>
       <Form
-        name="registrationForm"
+        id="registrationForm"
         data-cy="registration-form"
-        onSubmit={(e) => performAuthentication(e, dispatch)}
+        onSubmit={(e) => props.registerAndProceed(e)}
       >
         <Form.Input
           icon="at"
@@ -42,21 +36,8 @@ const RegistrationForm = () => {
           placeholder="password"
           iconPosition="left"
         />
-
-        {/* <Button data-cy="submit-btn" icon labelPosition="left">
-          <Icon name="user"></Icon>
-          Register
-        </Button> */}
-        {errorMessage && (
-          <Message data-cy="error-message">{errorMessage}</Message>
-        )}
       </Form>
-      {authenticatedUser && (
-        <h3 data-cy="header-user-email">
-          Logged in as {authenticatedUser.email}
-        </h3>
-      )}
-    </div>
+    </>
   );
 };
 

@@ -1,5 +1,11 @@
 import React, { useState } from "react";
-import { Button, Icon, Modal, Message } from "semantic-ui-react";
+import {
+  Button,
+  Icon,
+  Modal,
+  Message,
+  ModalDescription,
+} from "semantic-ui-react";
 import RegistrationForm from "./RegistrationForm";
 import { performAuthentication } from "../modules/auth";
 import { useDispatch, useSelector } from "react-redux";
@@ -11,12 +17,9 @@ const MasterModal = () => {
   const [firstOpen, setFirstOpen] = useState(false);
   const [secondOpen, setSecondOpen] = useState(false);
 
-  const registerAndProceed = (e) => {
-    performAuthentication(e, dispatch);
-    authenticatedUser ? 
-    setSecondOpen(true)
-    :
-    setSecondOpen(false)
+  const registerAndProceed = async (e) => {
+    await performAuthentication(e, dispatch);
+    authenticatedUser ? setSecondOpen(true) : setSecondOpen(false);
   };
 
   const finalizePayment = () => {
@@ -26,7 +29,9 @@ const MasterModal = () => {
 
   return (
     <>
-      <Button onClick={() => setFirstOpen(true)} data-cy="register-btn"></Button>
+      <Button onClick={() => setFirstOpen(true)} data-cy="register-btn">
+        Register To View Premium Content
+      </Button>
       <Modal
         onClose={() => setFirstOpen(false)}
         onOpen={() => setFirstOpen(true)}
@@ -35,15 +40,22 @@ const MasterModal = () => {
       >
         <Modal.Header>Enter Your Details</Modal.Header>
         <Modal.Content>
-          <RegistrationForm />
+          <RegistrationForm registerAndProceed={registerAndProceed} />
           <Modal.Description>
             {errorMessage && (
-              <p data-cy="error-message">{errorMessage}</p>
+              <Message color="red" data-cy="error-message">
+                {errorMessage}
+              </Message>
             )}
           </Modal.Description>
         </Modal.Content>
         <Modal.Actions>
-          <Button onClick={(e) => registerAndProceed(e)} data-cy="submit-btn" primary>
+          <Button
+            type="submit"
+            form="registrationForm"
+            data-cy="submit-btn"
+            primary
+          >
             Proceed to Payment <Icon name="right chevron" />
           </Button>
         </Modal.Actions>
@@ -53,8 +65,14 @@ const MasterModal = () => {
           open={secondOpen}
           size="medium"
         >
+          <Modal.Header>
+            <h3 data-cy="header-user-email">
+              Logged in as {authenticatedUser.email}
+            </h3>
+          </Modal.Header>
           <Modal.Header>Enter Card Details</Modal.Header>
           <Modal.Content>Card payment form goes here</Modal.Content>
+          <Modal.Description></Modal.Description>
           <Modal.Actions>
             <Button icon="check" content="All Done" onClick={finalizePayment} />
           </Modal.Actions>

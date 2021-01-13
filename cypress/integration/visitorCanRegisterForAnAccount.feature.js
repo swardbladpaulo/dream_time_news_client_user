@@ -18,17 +18,16 @@ describe("User can register", () => {
     cy.visit("/");
   });
 
-  it.only("successful registration", () => {
+  it("successful registration", () => {
     cy.get("[data-cy='register-btn']").click();
     cy.get("[data-cy='registration-form']").within(() => {
       cy.get("[data-cy='email']").type("registered_user@user.com");
       cy.get("[data-cy='password']").type("123456789");
       cy.get("[data-cy='password-confirmation']").type("123456789");
-      // cy.get("[data-cy='submit-btn']").click();
     });
     cy.get("[data-cy='first-registration']").within(() => {
       cy.get("[data-cy='submit-btn']").click();
-    })
+    });
     cy.get("[data-cy='header-user-email']").should(
       "contain",
       "Logged in as registered_user@mail.com"
@@ -42,7 +41,7 @@ describe("User can register", () => {
         url: "http://localhost:3000/api/**",
         status: "401",
         response: {
-          errors: ["Registration failed, please try again"] /*from backend*/,
+          errors: "Registration unsuccessful",
           success: false,
         },
       });
@@ -54,11 +53,13 @@ describe("User can register", () => {
         cy.get("[data-cy='email']").type("user@mail.com");
         cy.get("[data-cy='password']").type("password");
         cy.get("[data-cy='password-confirmation']").type("wrongpassword");
-        cy.get("[data-cy='submit-btn']").click();
       });
-      // cy.get("[data-cy='error-confirmation-message']").contains(
-      //   "Registration failed, please try again"
-      //   )
+      cy.get("[data-cy='first-registration']").within(() => {
+        cy.get("[data-cy='submit-btn']").click();
+        cy.get("[data-cy='error-message']").contains(
+          "Registration unsuccessful"
+        );
+      });
     });
   });
 });

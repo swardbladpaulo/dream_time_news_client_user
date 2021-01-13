@@ -2,7 +2,6 @@ import React from 'react'
 import { Menu, Segment, Image } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import MasterModal from './MasterModal'
-import Header from './Header'
 
 const MenuHeader = () => {
 
@@ -19,8 +18,7 @@ const MenuHeader = () => {
         fluid="true" />
         <Menu.Item 
         />
-        <Menu.Item>
-          {/* <Header /> */}
+        <Menu.Item position="right" >
           <MasterModal />
         </Menu.Item>
       </Menu>

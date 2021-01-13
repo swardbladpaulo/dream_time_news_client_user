@@ -29,7 +29,7 @@ const performAuthentication = async (e, dispatch) => {
   } catch (error) {
     dispatch({
       type: "SET_ERROR_MESSAGE",
-      payload: "error bigi",
+      payload: error.response.data.errors[0],
     });
   }
 };
