@@ -6,9 +6,9 @@ const Header = () => {
 
   return (
     <>
-      <button data-cy="register-btn" onClick={() => setRegisterForm(true)}>
+     <button data-cy="register-btn" onClick={() => setRegisterForm(true)}>
         Register here!
-      </button>
+      </button> 
 
       {selectRegisterForm && <RegistrationForm />}
     </>

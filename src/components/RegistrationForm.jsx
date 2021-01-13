@@ -43,10 +43,10 @@ const RegistrationForm = () => {
           iconPosition="left"
         />
 
-        <Button data-cy="submit-btn" icon labelPosition="left">
+        {/* <Button data-cy="submit-btn" icon labelPosition="left">
           <Icon name="user"></Icon>
           Register
-        </Button>
+        </Button> */}
         {errorMessage && (
           <Message data-cy="error-message">{errorMessage}</Message>
         )}
