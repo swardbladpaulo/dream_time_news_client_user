@@ -8,19 +8,3 @@ const Header = () => {
 
   return (
     <>
-    <Menu>
-      <Menu.Item><Image src="./assets/dreamtimesnews.png"/> </Menu.Item>
-      <Menu.Item><RegisterModal></RegisterModal>
-        
-        {/* <Button data-cy="register-btn" onClick={() => setRegisterForm(true)}>
-        Register here!
-      </Button> */}
-      </Menu.Item>
-    </Menu>
-
-      {/* {selectRegisterForm && <RegisterModal />} */}
-    </>
-  );
-};
-
-export default Header;

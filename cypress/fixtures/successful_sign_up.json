@@ -1,0 +1,11 @@
+{
+  "status": "success",
+  "data": {
+    "id": 3,
+    "email": "reaksa@mail.com",
+    "provider": "email",
+    "uid": "reaksa@mail.com",
+    "allow_password_change": false,
+    "role": "registered_user"
+  }
+}

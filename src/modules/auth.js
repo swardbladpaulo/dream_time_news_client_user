@@ -8,28 +8,31 @@ const auth = new JtockAuth({
 const performAuthentication = async (e, dispatch) => {
   try {
     e.preventDefault();
-    let response = await auth.signUp({
+    const response = await auth.signUp({
       email: e.target.elements.email.value,
       password: e.target.elements.password.value,
       password_confirmation: e.target.elements.password_confirmation.value,
     });
 
-    if (response.data.data.role === "registered_user") {
+    // if (response.data.data.role === "registered_user") {
       dispatch({
         type: "SET_CURRENT_USER",
-        payload: response.data.data,
+        payload: {
+          authenticated: response.data.success,
+          currentUser: response.data.data,
+        },
       });
-    } else {
-      dispatch({
-        type: "SET_ERROR_MESSAGE",
-        payload: "Registration unsuccessful",
-      });
-      localStorage.removeItem("J-tockAuth-Storage");
-    }
+    // } else {
+    //   dispatch({
+    //     type: "SET_ERROR_MESSAGE",
+    //     payload: "Registration unsuccessful",
+    //   });
+    //   localStorage.removeItem("J-tockAuth-Storage");
+    // }
   } catch (error) {
     dispatch({
       type: "SET_ERROR_MESSAGE",
-      payload: "error bigi",
+      payload: error.response.data.errors,
     });
   }
 };

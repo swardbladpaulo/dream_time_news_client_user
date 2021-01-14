@@ -1,8 +1,8 @@
 const initialState = {
   mainArticles: [],
   singleArticle: {},
-  authenticatedUser: {},
-  auth: false,
+  currentUser: {},
+  authenticated: false,
 };
 
 export default initialState;

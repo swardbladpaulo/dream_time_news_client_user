@@ -3,13 +3,12 @@ import DisplayArticlesData from "./components/DisplayArticlesData";
 import SingleArticle from "./components/SingleArticle";
 import { Switch, Route } from "react-router-dom";
 import RegistrationForm from "./components/RegistrationForm";
-import Header from "./components/Header";
+import MenuHeader from "./components/MenuHeader";
 
 const App = () => {
   return (
     <>
-      <Header />
-      
+      <MenuHeader />
       <Switch>
         <Route exact path="/" component={DisplayArticlesData}></Route>
         <Route exact path="/articles/:id" component={SingleArticle}></Route>
