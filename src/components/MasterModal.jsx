@@ -19,7 +19,6 @@ const MasterModal = () => {
   };
 
   const finalizePayment = () => {
-    // Stripe payment functionality will be added here
     setSecondOpen(false);
     setFirstOpen(false);
   };
@@ -37,7 +36,6 @@ const MasterModal = () => {
       >
         <Modal.Header>Enter Your Details</Modal.Header>
         <Modal.Content>
-          {/* <RegistrationForm /> */}
           <RegistrationForm
             data-cy="registration-form"
             registerAndProceed={registerAndProceed}
