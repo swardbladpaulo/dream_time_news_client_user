@@ -4,7 +4,7 @@ describe("User can see subscribe form", () => {
     cy.route({
       method: "GET",
       url: "http://localhost:3000/api/**",
-      response: "fx:registered_user_can_become_subscriber.json",
+      response: "fx:articles_data.json",
     });
 
     cy.route({
@@ -14,22 +14,21 @@ describe("User can see subscribe form", () => {
     });
     cy.visit("/");
   });
-});
 
 describe("registered user", () => {
-  cy.route({
-    method: "POST",
-    url: "http://localhost:3000/api/**",
-    response: "fx:visitor_can_register.json",
-    headers: {
-      uid: "registered_user@user.com",
-      access_token: "token",
-      client: "12345",
-      token_type: "Bearer",
-      expiry: 20000,
-    },
-  });
   it("can fill payment form and subscribe", () => {
+    cy.route({
+      method: "POST",
+      url: "http://localhost:3000/api/**",
+      response: "fx:visitor_can_register.json",
+      headers: {
+        uid: "registered_user@user.com",
+        access_token: "token",
+        client: "12345",
+        token_type: "Bearer",
+        expiry: 20000,
+      },
+    });
     cy.wait(500);
     cy.get('[data-cy="card-number"]').within(() => {
       cy.get('iframe[name^="__privateStripeFrame"]').then(($iframe) => {
@@ -53,11 +52,14 @@ describe("registered user", () => {
         cy.wrap($body).find('input[name="cvc"]').type("424", { delay: 10 });
       });
     });
-    cy.get("[data-cy='payment-button']").contains("Confirm Payment").click();
+    cy.get("[data-cy='payment-details']").within(() => {
+      cy.get("[data-cy='submit-payment']").click().click();
+    });
     cy.get("[data-cy='payment-message']").contains(
       "You are now a subscriber"
     );
   });
+});
 });
 
 /*stripe error message from api to add 'Something went wrong'*/

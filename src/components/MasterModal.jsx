@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { Button, Icon, Modal, Message } from "semantic-ui-react";
 import RegistrationForm from "./RegistrationForm";
+import PaymentForm from './PaymentForm'
 import { performAuthentication } from "../modules/auth";
+import { performPayment } from '../modules/subscribe'
 import { useDispatch, useSelector } from "react-redux";
 
 const MasterModal = () => {
@@ -18,7 +20,9 @@ const MasterModal = () => {
     setSecondOpen(authenticated);
   };
 
-  const finalizePayment = () => {
+  const finalizePayment = (e) => {
+    e.preventDefault()
+    performPayment(e)
     setSecondOpen(false);
     setFirstOpen(false);
   };
@@ -63,15 +67,27 @@ const MasterModal = () => {
           onClose={() => setSecondOpen(false)}
           open={secondOpen}
           size="medium"
+          data-cy="payment-details"
         >
           <Modal.Header data-cy="header-user-email">
             <h3>Logged in as {currentUser.email}</h3>
           </Modal.Header>
           <Modal.Header>Enter Card Details</Modal.Header>
-          <Modal.Content>Card payment form goes here</Modal.Content>
-          <Modal.Description></Modal.Description>
+          <Modal.Content>
+            <PaymentForm 
+              data-cy="payment-form"
+              finalizePayment={finalizePayment}
+            />
+          </Modal.Content>
           <Modal.Actions>
-            <Button icon="check" content="All Done" onClick={finalizePayment} />
+            <Button 
+              icon="check" 
+              content="All Done"
+              type="submit"
+              form="paymentForm"
+              data-cy="submit-payment"
+              primary
+            />
           </Modal.Actions>
         </Modal>
       </Modal>

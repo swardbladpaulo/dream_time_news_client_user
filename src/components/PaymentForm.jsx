@@ -6,9 +6,8 @@ import {
   CardCVCElement,
   CardExpiryElement,
 } from "react-stripe-elements";
-import axios from "axios";
 
-const PaymentForm = () => {
+const PaymentForm = ({ onSubscribe, stripe }) => {
   const payWithStripe = async (stripeToken) => {
     let headers = JSON.parse(localStorage.getItem("credentials"));
     let response = await axios.post(
