@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { getArticleData } from "../modules/articlesData";
 import ArticleCard from "./ArticleCard";
 import { useSelector } from "react-redux";
-import { Card } from "semantic-ui-react";
+import { Card, Container } from "semantic-ui-react";
 
 const DisplayArticlesData = () => {
   const { mainArticles } = useSelector((state) => state);
@@ -21,7 +21,9 @@ const DisplayArticlesData = () => {
   );
 
   return (
-    <>{mainArticles.length > 0 && <div data-cy="index">{articleIndex}</div>}</>
+    <Container>
+      {mainArticles.length > 0 && <div data-cy="index">{articleIndex}</div>}
+    </Container>
   );
 };
 

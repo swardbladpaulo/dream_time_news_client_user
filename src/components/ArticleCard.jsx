@@ -12,7 +12,7 @@ const ArticleCard = ({ article }) => {
             fontWeight: "bold",
             fontSize: 30,
             color: "black",
-            textAlign: "center",
+            textAlign: "left",
           }}
         >
           {article.title}
@@ -23,25 +23,19 @@ const ArticleCard = ({ article }) => {
             fontWeight: "bold",
             fontSize: 20,
             color: "black",
-            textAlign: "center",
+            textAlign: "left",
           }}
         >
           {article.sub_title}
         </Card.Meta>
-        <Card.Description
-          data-cy="content"
-          style={{ fontWeight: "small", fontSize: 15, color: "black" }}
-        >
-          {article.content}
-        </Card.Description>
         <Card.Meta data-cy="author-email">{article.author}</Card.Meta>
         <Card.Meta data-cy="created-at">{`Created at: ${article.created_at}`}</Card.Meta>
-        <Card.Meta data-cy="updated-at">{`Updated at: ${article.updated_at}`}</Card.Meta>
         <Button
           data-id={article.id}
           data-cy={`read-me-button${article.id}`}
           as={NavLink}
           to={`/articles/${article.id}`}
+          color="orange"
         >
           Read More!
         </Button>

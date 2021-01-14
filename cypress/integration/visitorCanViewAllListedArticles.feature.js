@@ -17,9 +17,7 @@ describe("Visitor can see list of articles", () => {
           cy.get(`[data-cy="article-${index + 1}"]`).within(() => {
             cy.get('[data-cy="title"]').should("exist");
             cy.get('[data-cy="sub-title"]').should("exist");
-            cy.get('[data-cy="content"]').should("exist");
             cy.get('[data-cy="created-at"]').should("exist");
-            cy.get('[data-cy="updated-at"]').should("exist");
             cy.get('[data-cy="author-email"]').should("exist");
           });
         });

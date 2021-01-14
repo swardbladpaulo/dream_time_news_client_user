@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Button, Container, Grid } from "semantic-ui-react";
+import { Button, Message, Container, Grid } from "semantic-ui-react";
 import { getArticleData } from "../modules/articlesData";
 import { useSelector } from "react-redux";
 import { NavLink, useParams } from "react-router-dom";
@@ -12,7 +12,7 @@ const SingleArticle = () => {
     getArticleData.show(id);
   }, [id]);
   return (
-    <>
+    <Container>
       <Grid>
         <Grid.Column width={9}>
           <h1 data-cy="article-title">{singleArticle.title}</h1>
@@ -21,19 +21,20 @@ const SingleArticle = () => {
         </Grid.Column>
         <Grid.Column width={4}>
           <p data-cy="article-created-at">{`Created at: ${singleArticle.created_at}`}</p>
-          <p data-cy="article-updated-at">{`Updated at: ${singleArticle.updated_at}`}</p>
           <p data-cy="article-author">{singleArticle.author}</p>
         </Grid.Column>
       </Grid>
-      <Button data-cy="back-button" as={NavLink} to="/">
+      <Button data-cy="back-button" as={NavLink} to="/" color="twitter">
         Back
       </Button>
       {errorMessage && (
-        <Container data-cy="error-message-article">
-          <h1>{errorMessage}</h1>
-        </Container>
+        <Message 
+          color="red" 
+          data-cy="error-message-article"
+          header={errorMessage}
+        />
       )}
-    </>
+    </Container>
   );
 };
 

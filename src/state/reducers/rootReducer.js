@@ -14,7 +14,13 @@ const rootReducer = (state = initialState, action) => {
         singleArticle: action.payload,
       };
 
-    case "ERROR_MESSAGE":
+    case "SET_CURRENT_USER":
+      return {
+        ...state,
+        ...action.payload,
+      };
+
+    case "SET_ERROR_MESSAGE":
       return {
         ...state,
         errorMessage: action.payload,

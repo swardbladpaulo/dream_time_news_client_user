@@ -8,17 +8,18 @@ import { Provider } from 'react-redux';
 import 'semantic-ui-css/semantic.min.css';
 import { BrowserRouter } from "react-router-dom"
 
-axios.defaults.baseURL = process.env.REACT_APP_API_URL
- 
+axios.defaults.baseURL =
+  process.env.REACT_APP_API_URL
+
 window.store = store;
 
 ReactDOM.render(
   <Provider store={store}>
-    <BrowserRouter> 
+    <BrowserRouter>
       <App />
     </BrowserRouter>
   </Provider>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
 
 reportWebVitals();
