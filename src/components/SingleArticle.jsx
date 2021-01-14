@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Button, Message, Grid } from "semantic-ui-react";
+import { Button, Message, Container, Grid } from "semantic-ui-react";
 import { getArticleData } from "../modules/articlesData";
 import { useSelector } from "react-redux";
 import { NavLink, useParams } from "react-router-dom";
