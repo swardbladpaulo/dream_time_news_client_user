@@ -7,13 +7,12 @@ const auth = new JtockAuth({
 
 const performAuthentication = async (e, dispatch) => {
   try {
-    e.preventDefault();
+    
     const response = await auth.signUp({
       email: e.target.elements.email.value,
       password: e.target.elements.password.value,
       password_confirmation: e.target.elements.password_confirmation.value,
     });
-
     // if (response.data.data.role === "registered_user") {
       dispatch({
         type: "SET_CURRENT_USER",

@@ -16,8 +16,9 @@ const MasterModal = () => {
   const [firstOpen, setFirstOpen] = useState(false);
   const [secondOpen, setSecondOpen] = useState(false);
 
-  const registerAndProceed = async (e) => {
-    await performAuthentication(e, dispatch);
+  const registerAndProceed = (e) => {
+    e.preventDefault();
+    performAuthentication(e, dispatch);
     // currentUser ? setSecondOpen(true) : setSecondOpen(false);
     setSecondOpen(authenticated)
   };
@@ -49,7 +50,7 @@ const MasterModal = () => {
             )}
           </Modal.Description>
         </Modal.Content>
-        <Modal.Actions>
+        <Modal.Actions data-cy="first-form-submit">
           <Button
             type="submit"
             form="registrationForm"
