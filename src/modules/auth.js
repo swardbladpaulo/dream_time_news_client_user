@@ -7,27 +7,18 @@ const auth = new JtockAuth({
 
 const performAuthentication = async (e, dispatch) => {
   try {
-    
     const response = await auth.signUp({
       email: e.target.elements.email.value,
       password: e.target.elements.password.value,
       password_confirmation: e.target.elements.password_confirmation.value,
     });
-    // if (response.data.data.role === "registered_user") {
-      dispatch({
-        type: "SET_CURRENT_USER",
-        payload: {
-          authenticated: response.data.success,
-          currentUser: response.data.data,
-        },
-      });
-    // } else {
-    //   dispatch({
-    //     type: "SET_ERROR_MESSAGE",
-    //     payload: "Registration unsuccessful",
-    //   });
-    //   localStorage.removeItem("J-tockAuth-Storage");
-    // }
+    dispatch({
+      type: "SET_CURRENT_USER",
+      payload: {
+        authenticated: response.data.success,
+        currentUser: response.data.data,
+      },
+    });
   } catch (error) {
     dispatch({
       type: "SET_ERROR_MESSAGE",

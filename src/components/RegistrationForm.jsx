@@ -1,5 +1,5 @@
 import React from "react";
-import { Form, Icon } from "semantic-ui-react";
+import { Form } from "semantic-ui-react";
 
 const RegistrationForm = (props) => {
   return (

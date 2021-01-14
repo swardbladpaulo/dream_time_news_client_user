@@ -1,5 +1,5 @@
-describe("User can register", () => {
-  before(() => {
+describe("User ", () => {
+  beforeEach(() => {
     cy.server();
     cy.route({
       method: "POST",
@@ -10,11 +10,11 @@ describe("User can register", () => {
       },
     });
     cy.route({
-      method: 'GET',
-      url: 'http://localhost:3000/api/auth/validate_token',
+      method: "GET",
+      url: "http://localhost:3000/api/auth/validate_token",
       status: 200,
-      response: 'fixture:visitor_can_register.json'
-    })
+      response: "fixture:visitor_can_register.json",
+    });
 
     cy.route({
       method: "GET",
@@ -24,24 +24,23 @@ describe("User can register", () => {
     cy.visit("/");
   });
 
-  it.only("successful registration", () => {
+  it("can successfully register", () => {
     cy.get("[data-cy='register-btn']").click();
     cy.get("[data-cy='registration-form']").within(() => {
       cy.get("[data-cy='email']").type("registered_user@user.com");
       cy.get("[data-cy='password']").type("123456789");
       cy.get("[data-cy='password-confirmation']").type("123456789");
     });
-    // cy.get("[data-cy='first-form-submit']").within(() => {
-    //   cy.get("[data-cy='submit-btn']").click();
-    // });
-    cy.get("button").contains("Proceed").click()
+    cy.get("[data-cy='first-registration']").within(() => {
+      cy.get("[data-cy='submit-btn']").click().click();
+    });
     cy.get("[data-cy='header-user-email']").should(
       "contain",
       "Logged in as registered_user@mail.com"
     );
   });
 
-  describe("sad path: unsuccessful register", () => {
+  describe("not register with invalid credentials", () => {
     beforeEach(() => {
       cy.route({
         method: "POST",
@@ -69,5 +68,4 @@ describe("User can register", () => {
       });
     });
   });
-  
 });
