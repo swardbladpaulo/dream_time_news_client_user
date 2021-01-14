@@ -9,10 +9,8 @@ import 'semantic-ui-css/semantic.min.css';
 import { BrowserRouter } from "react-router-dom"
 
 axios.defaults.baseURL =
-  process.env.NODE_ENV === "production"
-    ? "https://dream-time-news-api.herokuapp.com"
-    : "http://localhost:3000/api";
-    
+  process.env.REACT_APP_API_URL
+
 window.store = store;
 
 ReactDOM.render(

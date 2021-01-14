@@ -1,4 +1,4 @@
-describe("User ", () => {
+describe("User can successfully register ", () => {
   beforeEach(() => {
     cy.server();
     cy.route({
@@ -24,7 +24,7 @@ describe("User ", () => {
     cy.visit("/");
   });
 
-  it("can successfully register", () => {
+  it("with valid credentials", () => {
     cy.get("[data-cy='register-btn']").click();
     cy.get("[data-cy='registration-form']").within(() => {
       cy.get("[data-cy='email']").type("registered_user@user.com");
@@ -40,20 +40,19 @@ describe("User ", () => {
     );
   });
 
-  describe("not register with invalid credentials", () => {
+  describe("User cannot register", () => {
     beforeEach(() => {
       cy.route({
         method: "POST",
         url: "http://localhost:3000/api/**",
-        status: "401",
+        status: "422",
         response: {
-          errors: "Registration unsuccessful",
-          success: false,
+          errors: "Password confirmation doesn't match Password",
         },
       });
     });
 
-    it("unsuccessful registration", () => {
+    it("with non-matching password confirmation", () => {
       cy.get("[data-cy='register-btn']").click();
       cy.get("[data-cy='registration-form']").within(() => {
         cy.get("[data-cy='email']").type("user@mail.com");
@@ -63,7 +62,7 @@ describe("User ", () => {
       cy.get("[data-cy='first-registration']").within(() => {
         cy.get("[data-cy='submit-btn']").click();
         cy.get("[data-cy='error-message']").contains(
-          "Registration unsuccessful"
+          "Password confirmation doesn't match Password"
         );
       });
     });

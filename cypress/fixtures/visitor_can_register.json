@@ -1,5 +1,5 @@
 {
-  "success": true,
+  "status": "success",
   "data": {
     "id": 2509,
     "email": "registered_user@mail.com",

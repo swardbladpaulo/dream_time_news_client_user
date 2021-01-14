@@ -12,10 +12,13 @@ const performAuthentication = async (e, dispatch) => {
       password: e.target.elements.password.value,
       password_confirmation: e.target.elements.password_confirmation.value,
     });
+    
+    let isAuthenticated = ( response.data.status === "success" )
+    
     dispatch({
       type: "SET_CURRENT_USER",
       payload: {
-        authenticated: response.data.success,
+        authenticated: isAuthenticated,
         currentUser: response.data.data,
       },
     });

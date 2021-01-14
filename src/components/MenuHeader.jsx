@@ -24,7 +24,6 @@ const MenuHeader = () => {
       </Menu>
     </Segment>
   )
-
 }
 
 export default MenuHeader

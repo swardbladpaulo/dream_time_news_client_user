@@ -21,8 +21,9 @@ const DisplayArticlesData = () => {
   );
 
   return (
-    
-    <Container>{mainArticles.length > 0 && <div data-cy="index">{articleIndex}</div>}</Container>
+    <Container>
+      {mainArticles.length > 0 && <div data-cy="index">{articleIndex}</div>}
+    </Container>
   );
 };
 
