@@ -36,7 +36,6 @@ const ArticleCard = ({ article }) => {
         </Card.Description>
         <Card.Meta data-cy="author-email">{article.author}</Card.Meta>
         <Card.Meta data-cy="created-at">{`Created at: ${article.created_at}`}</Card.Meta>
-        <Card.Meta data-cy="updated-at">{`Updated at: ${article.updated_at}`}</Card.Meta>
         <Button
           data-id={article.id}
           data-cy={`read-me-button${article.id}`}

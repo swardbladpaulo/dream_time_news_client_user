@@ -21,7 +21,6 @@ const SingleArticle = () => {
         </Grid.Column>
         <Grid.Column width={4}>
           <p data-cy="article-created-at">{`Created at: ${singleArticle.created_at}`}</p>
-          <p data-cy="article-updated-at">{`Updated at: ${singleArticle.updated_at}`}</p>
           <p data-cy="article-author">{singleArticle.author}</p>
         </Grid.Column>
       </Grid>
