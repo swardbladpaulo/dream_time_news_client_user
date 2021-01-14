@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Button, Container, Grid } from "semantic-ui-react";
+import { Button, Message, Grid } from "semantic-ui-react";
 import { getArticleData } from "../modules/articlesData";
 import { useSelector } from "react-redux";
 import { NavLink, useParams } from "react-router-dom";
@@ -28,9 +28,9 @@ const SingleArticle = () => {
         Back
       </Button>
       {errorMessage && (
-        <Container data-cy="error-message-article">
+        <Message color="red" data-cy="error-message-article">
           <h1>{errorMessage}</h1>
-        </Container>
+        </Message>
       )}
     </Container>
   );
