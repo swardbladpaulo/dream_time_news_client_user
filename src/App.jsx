@@ -8,7 +8,6 @@ import MenuHeader from "./components/MenuHeader";
 const App = () => {
   return (
     <>
-      {/* <h1>Hello Dream Time News!</h1> */}
       <MenuHeader />
       <Switch>
         <Route exact path="/" component={DisplayArticlesData}></Route>

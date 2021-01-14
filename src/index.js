@@ -10,9 +10,11 @@ import { BrowserRouter } from "react-router-dom"
 
 
 axios.defaults.baseURL =
-  process.env.NODE_ENV === 'production'
+  (process.env.NODE_ENV === 'production'
     ? 'https://dream-time-news-api.herokuapp.com'
-    : 'http://localhost:3000/api';
+    : 'http://localhost:3000/api');
+
+
 
 window.store = store;
 

@@ -4,7 +4,6 @@ import {
   Icon,
   Modal,
   Message,
-  ModalDescription,
 } from "semantic-ui-react";
 import RegistrationForm from "./RegistrationForm";
 import { performAuthentication } from "../modules/auth";
@@ -12,14 +11,15 @@ import { useDispatch, useSelector } from "react-redux";
 
 const MasterModal = () => {
   const dispatch = useDispatch();
-  const errorMessage = useSelector((state) => state.errorMessage);
-  const authenticatedUser = useSelector((state) => state.authenticatedUser);
+  const {errorMessage, currentUser} = useSelector((state) => state);
+  const authenticated = useSelector((state) => state.authenticated)
   const [firstOpen, setFirstOpen] = useState(false);
   const [secondOpen, setSecondOpen] = useState(false);
 
   const registerAndProceed = async (e) => {
     await performAuthentication(e, dispatch);
-    authenticatedUser ? setSecondOpen(true) : setSecondOpen(false);
+    // currentUser ? setSecondOpen(true) : setSecondOpen(false);
+    setSecondOpen(authenticated)
   };
 
   const finalizePayment = () => {
@@ -65,9 +65,9 @@ const MasterModal = () => {
           open={secondOpen}
           size="medium"
         >
-          <Modal.Header>
-            <h3 data-cy="header-user-email">
-              Logged in as {authenticatedUser.email}
+          <Modal.Header data-cy="header-user-email">
+            <h3 >
+              Logged in as {currentUser.email}
             </h3>
           </Modal.Header>
           <Modal.Header>Enter Card Details</Modal.Header>
