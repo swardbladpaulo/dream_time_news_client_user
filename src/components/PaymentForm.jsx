@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { Form, Label } from "semantic-ui-react";
+import { useDispatch } from "react-redux";
+import { Form, Label, Message, Button } from "semantic-ui-react";
 import {
 	CardNumberElement,
 	CardExpiryElement,
 	CardCvcElement,
-	// CardElement,
 	useStripe,
 	useElements,
 } from "@stripe/react-stripe-js";
@@ -13,38 +13,46 @@ import axios from "axios";
 const PaymentForm = () => {
 	const stripe = useStripe();
 	const elements = useElements();
-	const submitPayment = async e => {
-		e.preventDefault();
-		if (!stripe || !elements) {
-			return;
-		}
-		// const cardNumber = elements.getElement(CardNumberElement)
-		// const cardExpiry = elements.getElement(CardExpiryElement)
-		// const cardCVC = elements.getElement(CardCVCElement)
+	const dispatch = useDispatch();
+	const [errorMessage, setErrorMessage] = useState(null);
+	const [stripeToken, setStripeToken] = useState(null);
+	const [successMess, setSuccessMess] = useState("")
+
+	const submitPayment = async () => {
 		const cardElement = elements.getElement(
 			CardNumberElement,
 			CardExpiryElement,
 			CardCvcElement
 		);
-		const { error, paymentMethod } = await stripe.createPaymentMethod({
-			type: "card",
-			card: cardElement,
-		});
+		const { token, error } = await stripe.createToken(cardElement);
 		if (!error) {
-			const { payment } = paymentMethod;
-			const response = await axios.post("api/subscriptions", {
-				amount: 6000,
-				id: payment,
-			});
-			return response.paymentMethod;
+			setStripeToken(token);
+			setErrorMessage(null);
 		} else {
-			return error.message;
+			setErrorMessage(error.message);
+			setStripeToken(null);
+		}
+		const response = await axios.post("/subscriptions", {
+			amount: 600,
+			token: stripeToken,
+		});
+		if (response.status === 200) {
+			dispatch({
+				type: "SET_USER_AS_SUBSCRIBER",
+				payload: {
+					role: "subscriber",
+				},
+			});
+			setSuccessMess("You are now a subscriber")
+		} else {
+			setErrorMessage(response.error.message);
 		}
 	};
 	return (
 		<>
-			<Form id="paymentForm" data-cy="payment-form" onSubmit={submitPayment}>
-				{/* <CardElement /> */}
+			{errorMessage && <Message color="red">{errorMessage}</Message>}
+			{successMess ? (<Message color="green" data-cy="payment-message">{successMess}</Message>) :
+			(<Form id="paymentForm" data-cy="payment-form" onSubmit={submitPayment}>
 				<Form.Field data-cy="card-number">
 					<Label>Card Number</Label>
 					<CardNumberElement />
@@ -57,10 +65,19 @@ const PaymentForm = () => {
 					<Label>CVC</Label>
 					<CardCvcElement />
 				</Form.Field>
-			</Form>
+				<Button
+							icon="check"
+							content="Subscribe now!"
+							type="submit"
+							form="paymentForm"
+							data-cy="submit-payment"
+							primary
+						/>
+			</Form>)}
 		</>
 	);
 };
+
 
 export default PaymentForm;
 
