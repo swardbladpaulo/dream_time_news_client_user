@@ -3,7 +3,7 @@ describe("User can see subscribe form", () => {
     cy.server();
     cy.route({
       method: "GET",
-      url: "http://localhost:3000/api/**",
+      url: "http://localhost:3000/api/articles",
       response: "fx:articles_data.json",
     });
 
@@ -12,11 +12,6 @@ describe("User can see subscribe form", () => {
       url: "http://localhost:3000/api/subscriptions",
       response: "fx:stripe_response.json",
     });
-    cy.visit("/");
-  });
-
-describe("registered user", () => {
-  it("can fill payment form and subscribe", () => {
     cy.route({
       method: "POST",
       url: "http://localhost:3000/api/**",
@@ -29,6 +24,23 @@ describe("registered user", () => {
         expiry: 20000,
       },
     });
+    cy.visit("/");
+  });
+
+describe("registered user", () => {
+  it("can fill payment form and subscribe", () => {
+    // cy.route({
+    //   method: "POST",
+    //   url: "http://localhost:3000/api/**",
+    //   response: "fx:visitor_can_register.json",
+    //   headers: {
+    //     uid: "registered_user@user.com",
+    //     access_token: "token",
+    //     client: "12345",
+    //     token_type: "Bearer",
+    //     expiry: 20000,
+    //   },
+    // });
     cy.wait(500);
     cy.get('[data-cy="card-number"]').within(() => {
       cy.get('iframe[name^="__privateStripeFrame"]').then(($iframe) => {

@@ -3,7 +3,8 @@ import store from "../state/store/configureStore";
 
 const getArticleData = {
   async index() {
-    let result = await axios.get("/articles");
+    let result = await axios.get("api/articles");
+    debugger
     store.dispatch({
       type: "SET_ARTICLES_INDEX",
       payload: result.data.articles,
@@ -12,7 +13,7 @@ const getArticleData = {
 
   async show(articleId) {
     try {
-      let response = await axios.get(`/articles/${articleId}`);
+      let response = await axios.get(`api/articles/${articleId}`);
       store.dispatch({
         type: "SET_SINGLE_ARTICLE",
         payload: response.data.article,

@@ -24,7 +24,7 @@ describe("User can successfully register ", () => {
     cy.visit("/");
   });
 
-  it("with valid credentials", () => {
+  it.only("with valid credentials", () => {
     cy.get("[data-cy='register-btn']").click();
     cy.get("[data-cy='registration-form']").within(() => {
       cy.get("[data-cy='email']").type("registered_user@user.com");

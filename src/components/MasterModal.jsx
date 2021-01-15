@@ -3,8 +3,12 @@ import { Button, Icon, Modal, Message } from "semantic-ui-react";
 import RegistrationForm from "./RegistrationForm";
 import PaymentForm from './PaymentForm'
 import { performAuthentication } from "../modules/auth";
-import { performPayment } from '../modules/subscribe'
+// import { submitPayment } from '../modules/subscribe'
 import { useDispatch, useSelector } from "react-redux";
+import {loadStripe} from '@stripe/stripe-js'
+import {Elements} from '@stripe/react-stripe-js'
+
+const stripePromise = loadStripe('pk_test_6pRNASCoBOKtIshFeQd4XMUh')
 
 const MasterModal = () => {
   const dispatch = useDispatch();
@@ -20,12 +24,12 @@ const MasterModal = () => {
     setSecondOpen(authenticated);
   };
 
-  const finalizePayment = (e) => {
-    e.preventDefault()
-    performPayment(e)
-    setSecondOpen(false);
-    setFirstOpen(false);
-  };
+  // const finalizePayment = (e) => {
+  //   e.preventDefault()
+  //   submitPayment(e)
+  //   setSecondOpen(false);
+  //   setFirstOpen(false);
+  // };
 
   return (
     <>
@@ -74,10 +78,12 @@ const MasterModal = () => {
           </Modal.Header>
           <Modal.Header>Enter Card Details</Modal.Header>
           <Modal.Content>
+            <Elements stripe={stripePromise}>
             <PaymentForm 
               data-cy="payment-form"
-              finalizePayment={finalizePayment}
+              
             />
+            </Elements>
           </Modal.Content>
           <Modal.Actions>
             <Button 
