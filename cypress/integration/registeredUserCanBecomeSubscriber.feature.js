@@ -29,18 +29,15 @@ describe("User can see subscribe form", () => {
 
 describe("registered user", () => {
   it("can fill payment form and subscribe", () => {
-    // cy.route({
-    //   method: "POST",
-    //   url: "http://localhost:3000/api/**",
-    //   response: "fx:visitor_can_register.json",
-    //   headers: {
-    //     uid: "registered_user@user.com",
-    //     access_token: "token",
-    //     client: "12345",
-    //     token_type: "Bearer",
-    //     expiry: 20000,
-    //   },
-    // });
+    cy.get("[data-cy='register-btn']").click();
+    cy.get("[data-cy='registration-form']").within(() => {
+      cy.get("[data-cy='email']").type("registered_user@user.com");
+      cy.get("[data-cy='password']").type("123456789");
+      cy.get("[data-cy='password-confirmation']").type("123456789");
+    });
+    cy.get("[data-cy='first-registration']").within(() => {
+      cy.get("[data-cy='submit-btn']").click().click();
+    });
     cy.wait(500);
     cy.get('[data-cy="card-number"]').within(() => {
       cy.get('iframe[name^="__privateStripeFrame"]').then(($iframe) => {
