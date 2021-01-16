@@ -3,13 +3,14 @@ import { Button, Icon, Modal, Message } from "semantic-ui-react";
 import RegistrationForm from "./RegistrationForm";
 import PaymentForm from "./PaymentForm";
 import { performAuthentication } from "../modules/auth";
-import { submitPayment } from '../modules/subscribe'
 import { useDispatch, useSelector } from "react-redux";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import { useTranslation } from "react-i18next";
 
-const stripePromise = loadStripe("pk_test_6pRNASCoBOKtIshFeQd4XMUh");
+const stripePromise = loadStripe(
+  "pk_test_51HuxhoEDdj3L9cb7mRwXVf3mjnVY7dk7NL7WmIZ31HGjkKHk9RSQASdCWIXiObHTiyfYkNhxKFsvLFkvLKyxM6Wz004BVP7pWj"
+);
 
 const MasterModal = () => {
 	const { t } = useTranslation();
@@ -20,16 +21,16 @@ const MasterModal = () => {
 	const [firstOpen, setFirstOpen] = useState(false);
 	const [secondOpen, setSecondOpen] = useState(false);
 
-	const registerAndProceed = e => {
-		e.preventDefault();
-		performAuthentication(e, dispatch);
-		setSecondOpen(authenticated);
-	};
+  const registerAndProceed = e => {
+    e.preventDefault();
+    performAuthentication(e, dispatch);
+    setSecondOpen(authenticated);
+  };
 
-	const finalizePayment = () => {
-	  setSecondOpen(false);
-	  setFirstOpen(false);
-	};
+  const finalizePayment = () => {
+    setSecondOpen(false);
+    setFirstOpen(false);
+  };
 
 	return (
 		<>

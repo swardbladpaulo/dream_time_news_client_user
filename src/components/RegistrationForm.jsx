@@ -10,7 +10,7 @@ const RegistrationForm = (props) => {
       <Form
         id="registrationForm"
         data-cy="registration-form"
-        onSubmit={(e) => props.registerAndProceed(e)}
+        onSubmit={e => props.registerAndProceed(e)}
       >
         <Form.Input
           icon="at"

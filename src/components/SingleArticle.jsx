@@ -30,8 +30,8 @@ const SingleArticle = () => {
         Back
       </Button>
       {errorMessage && (
-        <Message 
-          color="red" 
+        <Message
+          color="red"
           data-cy="error-message-article"
           header={errorMessage}
         />

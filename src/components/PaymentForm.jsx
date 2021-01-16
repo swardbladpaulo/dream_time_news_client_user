@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Form, Label, Message, Button } from "semantic-ui-react";
 import {
-	CardNumberElement,
-	CardExpiryElement,
-	CardCvcElement,
-	useStripe,
-	useElements,
+  CardNumberElement,
+  CardExpiryElement,
+  CardCvcElement,
+  useStripe,
+  useElements,
 } from "@stripe/react-stripe-js";
 import axios from "axios";
 import { useTranslation } from "react-i18next";
@@ -80,15 +80,4 @@ const PaymentForm = () => {
 	);
 };
 
-
 export default PaymentForm;
-
-// const payWithStripe = async (stripeToken) => {
-//   let headers = JSON.parse(localStorage.getItem("credentials"));
-//   let response = await axios.post(
-//     "/subscriptions",
-//     { stripeToken: stripeToken },
-//     { headers: headers }
-//   );
-//   onSubscribe(response.data.paid ? response.data.message : "Whoops!");
-// };
