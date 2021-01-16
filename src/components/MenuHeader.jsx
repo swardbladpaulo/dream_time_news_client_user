@@ -21,6 +21,7 @@ const MenuHeader = () => {
         </Menu.Item >
         <Menu.Item name="En" >
           <Image 
+            data-cy="us-btn"
             id="en" onClick={(e) => { changeLanguage(e) }}
             src="./assets/united-states.png"
             size="mini" 
@@ -28,6 +29,7 @@ const MenuHeader = () => {
         </Menu.Item>
         <Menu.Item name="Sv" >
           <Image 
+            data-cy="se-btn"
             id="sv" onClick={(e) => { changeLanguage(e) }}
             src= "./assets/sweden.png"
             size="mini"  
