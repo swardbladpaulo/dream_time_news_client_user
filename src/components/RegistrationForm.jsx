@@ -1,13 +1,13 @@
 import React from "react";
 import { Form } from "semantic-ui-react";
 
-const RegistrationForm = (props) => {
+const RegistrationForm = props => {
   return (
     <>
       <Form
         id="registrationForm"
         data-cy="registration-form"
-        onSubmit={(e) => props.registerAndProceed(e)}
+        onSubmit={e => props.registerAndProceed(e)}
       >
         <Form.Input
           icon="at"

@@ -14,7 +14,6 @@ const App = () => {
         <Route exact path="/articles/:id" component={SingleArticle}></Route>
         <Route exact path="/sign_up" component={RegistrationForm}></Route>
       </Switch>
-      
     </>
   );
 };

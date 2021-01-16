@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import { NavLink, useParams } from "react-router-dom";
 
 const SingleArticle = () => {
-  const { singleArticle, errorMessage } = useSelector((state) => state);
+  const { singleArticle, errorMessage } = useSelector(state => state);
   const { id } = useParams();
 
   useEffect(() => {
@@ -28,8 +28,8 @@ const SingleArticle = () => {
         Back
       </Button>
       {errorMessage && (
-        <Message 
-          color="red" 
+        <Message
+          color="red"
           data-cy="error-message-article"
           header={errorMessage}
         />
