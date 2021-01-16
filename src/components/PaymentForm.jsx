@@ -64,11 +64,11 @@ const PaymentForm = () => {
       ) : (
         <Form id="paymentForm" data-cy="payment-form" onSubmit={submitPayment}>
           <Form.Field data-cy="card-number">
-            <Label>{t("menuHeader_8")}</Label>
+            <Label>{t("CardNumber")}</Label>
             <CardNumberElement />
           </Form.Field>
           <Form.Field data-cy="card-expiry">
-            <Label>{t("menuHeader_9")}</Label>
+            <Label>{t("ExpiryDate")}</Label>
             <CardExpiryElement />
           </Form.Field>
           <Form.Field data-cy="card-cvc">
@@ -77,7 +77,7 @@ const PaymentForm = () => {
           </Form.Field>
           <Button
             icon="check"
-            content={t("menuHeader_10")}
+            content={t("SubscribeNow")}
             type="submit"
             form="paymentForm"
             data-cy="submit-payment"

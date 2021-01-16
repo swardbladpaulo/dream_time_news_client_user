@@ -32,7 +32,7 @@ const ArticleCard = ({ article }) => {
           {article.sub_title}
         </Card.Meta>
         <Card.Meta data-cy="author-email">{article.author}</Card.Meta>
-        <Card.Meta data-cy="created-at">{`${t ("menuHeader_13")} ${article.created_at}`}</Card.Meta>
+        <Card.Meta data-cy="created-at">{`${t ("CreatedAt")} ${article.created_at}`}</Card.Meta>
         <Button
           data-id={article.id}
           data-cy={`read-me-button${article.id}`}
@@ -40,7 +40,7 @@ const ArticleCard = ({ article }) => {
           to={`/articles/${article.id}`}
           color="orange"
         >
-          {t ("menuHeader_12")}
+          {t ("ReadMore")}
         </Button>
       </Card.Content>
     </Card>

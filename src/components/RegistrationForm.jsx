@@ -24,19 +24,19 @@ const RegistrationForm = (props) => {
         <Form.Input
           icon="key"
           type="password"
-          label={t ('menuHeader_3')}
+          label={t ('Password')}
           name="password"
           data-cy="password"
-          placeholder={t ('menuHeader_3')}
+          placeholder={t ('Password')}
           iconPosition="left"
         />
         <Form.Input
           icon="key"
           type="password"
-          label={t ("menuHeader_4")}
+          label={t ("Password-conf")}
           name="password_confirmation"
           data-cy="password-confirmation"
-          placeholder={t ("menuHeader_4")}
+          placeholder={t ("Password-conf")}
           iconPosition="left"
         />
       </Form>

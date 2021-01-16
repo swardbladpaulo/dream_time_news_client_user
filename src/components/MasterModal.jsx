@@ -35,7 +35,7 @@ const MasterModal = () => {
 	return (
 		<>
 			<Button onClick={() => setFirstOpen(true)} data-cy="register-btn">
-				{t('menuHeader_1')}
+				{t('register-btn')}
 			</Button>
 			<Modal
 				onClose={() => setFirstOpen(false)}
@@ -43,7 +43,7 @@ const MasterModal = () => {
 				open={firstOpen}
 				data-cy="first-registration"
 			>
-				<Modal.Header>{t("menuHeader_2") }</Modal.Header>
+				<Modal.Header>{t("Enter Your Details") }</Modal.Header>
 				<Modal.Content>
 					<RegistrationForm
 						data-cy="registration-form"
@@ -64,7 +64,7 @@ const MasterModal = () => {
 						data-cy="submit-btn"
 						primary
 					>
-						{t ("menuHeader_5")} <Icon name="right chevron" />
+						{t ("Proceed to Payment")} <Icon name="right chevron" />
 					</Button>
 				</Modal.Actions>
 
@@ -75,9 +75,9 @@ const MasterModal = () => {
 					data-cy="payment-details"
 				>
 					<Modal.Header data-cy="header-user-email">
-						<Message>{t ("menuHeader_6")} {currentUser.email}</Message>
+						<Message>{t ("LoggedInAs")} {currentUser.email}</Message>
 					</Modal.Header>
-					<Modal.Header>{t ("menuHeader_7")}</Modal.Header>
+					<Modal.Header>{t ("CardDetails")}</Modal.Header>
 					<Modal.Content>
 						<Elements stripe={stripePromise}>
 							<PaymentForm data-cy="payment-form" />
@@ -86,7 +86,7 @@ const MasterModal = () => {
 					<Modal.Actions>
 						<Button
 							icon="check"
-							content={t ("menuHeader_11")}
+							content={t ("AllDone")}
 							data-cy="all-done"
 							onClick={finalizePayment}
 							primary

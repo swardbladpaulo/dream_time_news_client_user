@@ -22,12 +22,12 @@ const SingleArticle = () => {
           <p data-cy="article-content">{singleArticle.content}</p>
         </Grid.Column>
         <Grid.Column width={4}>
-          <p data-cy="article-created-at">{`${t ("menuHeader_13")} ${singleArticle.created_at}`}</p>
+          <p data-cy="article-created-at">{`${t ("CreatedAt")} ${singleArticle.created_at}`}</p>
           <p data-cy="article-author">{singleArticle.author}</p>
         </Grid.Column>
       </Grid>
       <Button data-cy="back-button" as={NavLink} to="/" color="twitter">
-      {t ("menuHeader_14")}
+      {t ("Back")}
       </Button>
       {errorMessage && (
         <Message
