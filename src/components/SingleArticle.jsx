@@ -27,7 +27,7 @@ const SingleArticle = () => {
         </Grid.Column>
       </Grid>
       <Button data-cy="back-button" as={NavLink} to="/" color="twitter">
-        Back
+      {t ("menuHeader_14")}
       </Button>
       {errorMessage && (
         <Message
