@@ -23,7 +23,7 @@ const MenuHeader = () => {
           <Image 
             data-cy="us-btn"
             id="en" onClick={(e) => { changeLanguage(e) }}
-            src="./assets/united-states.png"
+            src="./assets/united-kingdom.png"
             size="mini" 
           />
         </Menu.Item>
