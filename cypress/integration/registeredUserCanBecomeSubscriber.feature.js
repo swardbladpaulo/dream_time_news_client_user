@@ -89,7 +89,7 @@ describe("User can see subscribe form", () => {
 				errors: { message: "Something went wrong" },
 			});
 		});
-		it.only("cannot successfully subscribe", () => {
+		it("cannot successfully subscribe", () => {
 			cy.get("[data-cy='register-btn']").click();
 			cy.get("[data-cy='registration-form']").within(() => {
 				cy.get("[data-cy='email']").type("registered_user@user.com");
