@@ -80,15 +80,13 @@ const MasterModal = () => {
 					<Modal.Header>{t ("menuHeader_7")}</Modal.Header>
 					<Modal.Content>
 						<Elements stripe={stripePromise}>
-							<PaymentForm data-cy="payment-form" submitPayment={submitPayment} />
+							<PaymentForm data-cy="payment-form" />
 						</Elements>
 					</Modal.Content>
 					<Modal.Actions>
 						<Button
 							icon="check"
 							content={t ("menuHeader_11")}
-							// type="submit"
-							// form="paymentForm"
 							data-cy="all-done"
 							onClick={finalizePayment}
 							primary
