@@ -1,8 +1,11 @@
 import React from "react";
 import { Button, Card } from "semantic-ui-react";
 import { NavLink } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const ArticleCard = ({ article }) => {
+  const { t } = useTranslation();
+
   return (
     <Card key={article.id} data-cy={`article-${article.id}`}>
       <Card.Content>
@@ -29,7 +32,7 @@ const ArticleCard = ({ article }) => {
           {article.sub_title}
         </Card.Meta>
         <Card.Meta data-cy="author-email">{article.author}</Card.Meta>
-        <Card.Meta data-cy="created-at">{`Created at: ${article.created_at}`}</Card.Meta>
+        <Card.Meta data-cy="created-at">{`${t ("menuHeader_13")} ${article.created_at}`}</Card.Meta>
         <Button
           data-id={article.id}
           data-cy={`read-me-button${article.id}`}
@@ -37,7 +40,7 @@ const ArticleCard = ({ article }) => {
           to={`/articles/${article.id}`}
           color="orange"
         >
-          Read More!
+          {t ("menuHeader_12")}
         </Button>
       </Card.Content>
     </Card>

@@ -1,7 +1,10 @@
 import React from "react";
 import { Form } from "semantic-ui-react";
+import { useTranslation } from "react-i18next";
 
 const RegistrationForm = (props) => {
+  const { t } = useTranslation();
+
   return (
     <>
       <Form
@@ -21,19 +24,19 @@ const RegistrationForm = (props) => {
         <Form.Input
           icon="key"
           type="password"
-          label="Password"
+          label={t ('menuHeader_3')}
           name="password"
           data-cy="password"
-          placeholder="password"
+          placeholder={t ('menuHeader_3')}
           iconPosition="left"
         />
         <Form.Input
           icon="key"
           type="password"
-          label="Password confirmation"
+          label={t ("menuHeader_4")}
           name="password_confirmation"
           data-cy="password-confirmation"
-          placeholder="password"
+          placeholder={t ("menuHeader_4")}
           iconPosition="left"
         />
       </Form>

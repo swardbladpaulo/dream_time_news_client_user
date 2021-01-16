@@ -7,10 +7,12 @@ import { submitPayment } from '../modules/subscribe'
 import { useDispatch, useSelector } from "react-redux";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
+import { useTranslation } from "react-i18next";
 
 const stripePromise = loadStripe("pk_test_6pRNASCoBOKtIshFeQd4XMUh");
 
 const MasterModal = () => {
+	const { t } = useTranslation();
 	const dispatch = useDispatch();
 	const { errorMessage, authenticated, currentUser } = useSelector(
 		state => state
@@ -32,7 +34,7 @@ const MasterModal = () => {
 	return (
 		<>
 			<Button onClick={() => setFirstOpen(true)} data-cy="register-btn">
-				Register To View Premium Content
+				{t('menuHeader_1')}
 			</Button>
 			<Modal
 				onClose={() => setFirstOpen(false)}
@@ -40,7 +42,7 @@ const MasterModal = () => {
 				open={firstOpen}
 				data-cy="first-registration"
 			>
-				<Modal.Header>Enter Your Details</Modal.Header>
+				<Modal.Header>{t("menuHeader_2") }</Modal.Header>
 				<Modal.Content>
 					<RegistrationForm
 						data-cy="registration-form"
@@ -61,7 +63,7 @@ const MasterModal = () => {
 						data-cy="submit-btn"
 						primary
 					>
-						Proceed to Payment <Icon name="right chevron" />
+						{t ("menuHeader_5")} <Icon name="right chevron" />
 					</Button>
 				</Modal.Actions>
 
@@ -72,9 +74,9 @@ const MasterModal = () => {
 					data-cy="payment-details"
 				>
 					<Modal.Header data-cy="header-user-email">
-						<Message>Logged in as {currentUser.email}</Message>
+						<Message>{t ("menuHeader_6")} {currentUser.email}</Message>
 					</Modal.Header>
-					<Modal.Header>Enter Card Details</Modal.Header>
+					<Modal.Header>{t ("menuHeader_7")}</Modal.Header>
 					<Modal.Content>
 						<Elements stripe={stripePromise}>
 							<PaymentForm data-cy="payment-form" submitPayment={submitPayment} />
@@ -83,7 +85,7 @@ const MasterModal = () => {
 					<Modal.Actions>
 						<Button
 							icon="check"
-							content="All Done"
+							content={t ("menuHeader_11")}
 							// type="submit"
 							// form="paymentForm"
 							data-cy="all-done"

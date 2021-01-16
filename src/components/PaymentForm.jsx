@@ -9,11 +9,13 @@ import {
 	useElements,
 } from "@stripe/react-stripe-js";
 import axios from "axios";
+import { useTranslation } from "react-i18next";
 
 const PaymentForm = () => {
 	const stripe = useStripe();
 	const elements = useElements();
 	const dispatch = useDispatch();
+	const { t } = useTranslation();
 	const [errorMessage, setErrorMessage] = useState(null);
 	const [stripeToken, setStripeToken] = useState(null);
 	const [successMess, setSuccessMess] = useState("")
@@ -54,11 +56,11 @@ const PaymentForm = () => {
 			{successMess ? (<Message color="green" data-cy="payment-message">{successMess}</Message>) :
 			(<Form id="paymentForm" data-cy="payment-form" onSubmit={submitPayment}>
 				<Form.Field data-cy="card-number">
-					<Label>Card Number</Label>
+					<Label>{t ("menuHeader_8")}</Label>
 					<CardNumberElement />
 				</Form.Field>
 				<Form.Field data-cy="card-expiry">
-					<Label>Expiry Date</Label>
+					<Label>{t("menuHeader_9")}</Label>
 					<CardExpiryElement />
 				</Form.Field>
 				<Form.Field data-cy="card-cvc">
@@ -67,7 +69,7 @@ const PaymentForm = () => {
 				</Form.Field>
 				<Button
 							icon="check"
-							content="Subscribe now!"
+							content={t ("menuHeader_10")}
 							type="submit"
 							form="paymentForm"
 							data-cy="submit-payment"
