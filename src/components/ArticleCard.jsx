@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Card } from "semantic-ui-react";
+import { Button, Card, Image } from "semantic-ui-react";
 import { NavLink } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
@@ -9,6 +9,7 @@ const ArticleCard = ({ article }) => {
   return (
     <Card key={article.id} data-cy={`article-${article.id}`}>
       <Card.Content>
+      <Image size="small" wrapped ui={false} src={article.image_path} />
         <Card.Header
           data-cy="title"
           style={{
