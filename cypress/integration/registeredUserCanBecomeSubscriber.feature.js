@@ -27,13 +27,13 @@ describe("User can see subscribe form", () => {
 			cy.route({
 				method: "POST",
 				url: "http://localhost:3000/api/subscriptions",
-				response: "fx:stripe_response.json"
-      });
-      cy.route({
-        method: "POST",
-        url: "http://localhost:3000/api/**",
-        response: "fx:visitor_can_register.json",
-      });
+				response: "fx:stripe_response.json",
+			});
+			cy.route({
+				method: "POST",
+				url: "http://localhost:3000/api/**",
+				response: "fx:visitor_can_register.json",
+			});
 		});
 		it("can fill payment form and successfully subscribe", () => {
 			cy.get("[data-cy='register-btn']").click();
@@ -133,4 +133,3 @@ describe("User can see subscribe form", () => {
 		});
 	});
 });
-

@@ -88,13 +88,3 @@ const PaymentForm = () => {
 };
 
 export default PaymentForm;
-
-// const payWithStripe = async (stripeToken) => {
-//   let headers = JSON.parse(localStorage.getItem("credentials"));
-//   let response = await axios.post(
-//     "/subscriptions",
-//     { stripeToken: stripeToken },
-//     { headers: headers }
-//   );
-//   onSubscribe(response.data.paid ? response.data.message : "Whoops!");
-// };

@@ -3,12 +3,14 @@ import { Button, Icon, Modal, Message } from "semantic-ui-react";
 import RegistrationForm from "./RegistrationForm";
 import PaymentForm from "./PaymentForm";
 import { performAuthentication } from "../modules/auth";
-import { submitPayment } from '../modules/subscribe'
+import { submitPayment } from "../modules/subscribe";
 import { useDispatch, useSelector } from "react-redux";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 
-const stripePromise = loadStripe("pk_test_6pRNASCoBOKtIshFeQd4XMUh");
+const stripePromise = loadStripe(
+	"pk_test_51HuxhoEDdj3L9cb7mRwXVf3mjnVY7dk7NL7WmIZ31HGjkKHk9RSQASdCWIXiObHTiyfYkNhxKFsvLFkvLKyxM6Wz004BVP7pWj"
+);
 
 const MasterModal = () => {
 	const dispatch = useDispatch();
@@ -25,8 +27,8 @@ const MasterModal = () => {
 	};
 
 	const finalizePayment = () => {
-	  setSecondOpen(false);
-	  setFirstOpen(false);
+		setSecondOpen(false);
+		setFirstOpen(false);
 	};
 
 	return (
@@ -77,15 +79,16 @@ const MasterModal = () => {
 					<Modal.Header>Enter Card Details</Modal.Header>
 					<Modal.Content>
 						<Elements stripe={stripePromise}>
-							<PaymentForm data-cy="payment-form" submitPayment={submitPayment} />
+							<PaymentForm
+								data-cy="payment-form"
+								submitPayment={submitPayment}
+							/>
 						</Elements>
 					</Modal.Content>
 					<Modal.Actions>
 						<Button
 							icon="check"
 							content="All Done"
-							// type="submit"
-							// form="paymentForm"
 							data-cy="all-done"
 							onClick={finalizePayment}
 							primary

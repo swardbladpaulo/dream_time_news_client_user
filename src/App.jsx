@@ -6,17 +6,16 @@ import RegistrationForm from "./components/RegistrationForm";
 import MenuHeader from "./components/MenuHeader";
 
 const App = () => {
-  return (
-    <>
-      <MenuHeader />
-      <Switch>
-        <Route exact path="/" component={DisplayArticlesData}></Route>
-        <Route exact path="/articles/:id" component={SingleArticle}></Route>
-        <Route exact path="/sign_up" component={RegistrationForm}></Route>
-      </Switch>
-      
-    </>
-  );
+	return (
+		<>
+			<MenuHeader />
+			<Switch>
+				<Route exact path="/" component={DisplayArticlesData}></Route>
+				<Route exact path="/articles/:id" component={SingleArticle}></Route>
+				<Route exact path="/sign_up" component={RegistrationForm}></Route>
+			</Switch>
+		</>
+	);
 };
 
 export default App;
