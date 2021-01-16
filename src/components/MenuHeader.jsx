@@ -7,13 +7,9 @@ const MenuHeader = () => {
   return (
     <Segment inverted>
       <Menu inverted>
-        <Menu.Item as={Link} to={{ pathname: "/" }} >
-          <Image 
-            src="./assets/dreamtimesnews.png" 
-            size="large" 
-            fluid="true" 
-          />
-        </Menu.Item >
+        <Menu.Item as={Link} to={{ pathname: "/" }}>
+          <Image src="./assets/dreamtimesnews.png" size="large" fluid="true" />
+        </Menu.Item>
         <Menu.Item position="right">
           <MasterModal />
         </Menu.Item>
