@@ -14,29 +14,35 @@ const MenuHeader = () => {
       <Menu inverted>
         <Menu.Item as={Link} to={{ pathname: "/" }} >
           <Image 
-            src="./assets/dreamtimesnews.png" 
+            src="./assets/NewTimeDreamsLogo.png" 
             size="large" 
             fluid="true" 
           />
         </Menu.Item >
-        <Menu.Item name="En" >
+    
+        <Menu.Item position="right">
+        <Menu.Item name="En"  >
           <Image 
             data-cy="us-btn"
             id="en" onClick={(e) => { changeLanguage(e) }}
             src="./assets/united-kingdom.png"
             size="mini" 
+            style={{
+              padding: 5,
+              margin: 5,
+            }}
           />
-        </Menu.Item>
-        <Menu.Item name="Sv" >
           <Image 
             data-cy="se-btn"
             id="sv" onClick={(e) => { changeLanguage(e) }}
             src= "./assets/sweden.png"
             size="mini"  
+            style={{
+              padding: 5,
+              margin: 5,
+            }}
           />
         </Menu.Item>
-
-        <Menu.Item position="right">
           <MasterModal />
         </Menu.Item>
       </Menu>

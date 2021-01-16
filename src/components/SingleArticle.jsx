@@ -18,7 +18,7 @@ const SingleArticle = () => {
       <Grid>
         <Grid.Column width={4}>
           <h1 data-cy="article-title">{singleArticle.title}</h1>
-          <Image src={singleArticle.image_path} />
+          <Image src={singleArticle.image} />
           <h3 data-cy="article-sub-title">{singleArticle.sub_title}</h3>
           <p data-cy="article-content">{singleArticle.content}</p>
         </Grid.Column>

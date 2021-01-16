@@ -9,10 +9,12 @@ const ArticleCard = ({ article }) => {
   return (
     <Card key={article.id} data-cy={`article-${article.id}`}>
       <Card.Content>
-      <Image size="small" wrapped ui={false} src={article.image_path} />
+      <Image fluid src={article.image} />
         <Card.Header
           data-cy="title"
           style={{
+            marginTop: 15,
+            marginBottom: 10,
             fontWeight: "bold",
             fontSize: 30,
             color: "black",
@@ -21,25 +23,33 @@ const ArticleCard = ({ article }) => {
         >
           {article.title}
         </Card.Header>
+       
         <Card.Meta
           data-cy="sub-title"
           style={{
             fontWeight: "bold",
             fontSize: 20,
-            color: "black",
-            textAlign: "left",
+            color: "#4f5359",
+            textAlign: "justified",
+            marginBottom: 15,
+            lineHeight: 1.2,
           }}
         >
           {article.sub_title}
         </Card.Meta>
         <Card.Meta data-cy="author-email">{article.author}</Card.Meta>
-        <Card.Meta data-cy="created-at">{`${t ("CreatedAt")} ${article.created_at}`}</Card.Meta>
-        <Button
+        <Card.Meta 
+        data-cy="created-at"
+        style={{
+          marginBottom: 15,
+        }}
+        >{`${t ("CreatedAt")} ${article.created_at}`}</Card.Meta>
+        <Button fluid
           data-id={article.id}
           data-cy={`read-me-button${article.id}`}
           as={NavLink}
           to={`/articles/${article.id}`}
-          color="orange"
+          color="red"
         >
           {t ("ReadMore")}
         </Button>
