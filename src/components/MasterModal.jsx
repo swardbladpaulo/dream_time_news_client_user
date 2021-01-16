@@ -3,7 +3,6 @@ import { Button, Icon, Modal, Message } from "semantic-ui-react";
 import RegistrationForm from "./RegistrationForm";
 import PaymentForm from "./PaymentForm";
 import { performAuthentication } from "../modules/auth";
-import { submitPayment } from "../modules/subscribe";
 import { useDispatch, useSelector } from "react-redux";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
@@ -81,7 +80,6 @@ const MasterModal = () => {
 						<Elements stripe={stripePromise}>
 							<PaymentForm
 								data-cy="payment-form"
-								submitPayment={submitPayment}
 							/>
 						</Elements>
 					</Modal.Content>
