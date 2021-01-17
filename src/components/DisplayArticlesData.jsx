@@ -13,7 +13,12 @@ const DisplayArticlesData = () => {
 
   let articleIndex;
   articleIndex = (
-    <Card.Group itemsPerRow={3}>
+    <Card.Group
+      itemsPerRow={3}
+      style={{
+        paddingBottom: 50,
+      }}
+    >
       {mainArticles.map(article => {
         return <ArticleCard article={{ ...article }} />;
       })}

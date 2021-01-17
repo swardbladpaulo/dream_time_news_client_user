@@ -1,5 +1,5 @@
 {
-"register-btn": "Register To View Premium Content",
+"register-btn": "Dream Time News Premium",
 "Enter Your Details": "Enter Your Details",
 "Password": "Password",
 "Password-conf": "Password confirmation",
@@ -12,5 +12,6 @@
 "AllDone": "All Done",
 "ReadMore": "Read More!",
 "CreatedAt": "Created at",
-"Back": "Back"
+"Back": "Back",
+"Label": "Sign up here!"
 }

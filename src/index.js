@@ -6,12 +6,9 @@ import axios from 'axios';
 import store from './state/store/configureStore';
 import { Provider } from 'react-redux';
 import 'semantic-ui-css/semantic.min.css';
+import './index.css';
 import { BrowserRouter } from "react-router-dom"
 import './i18n'
-
-// axios.defaults.baseURL = "http://localhost:3000/api"
-axios.defaults.baseURL =
-  process.env.REACT_APP_API_URL
 
 axios.defaults.baseURL = process.env.REACT_APP_API_URL;
 

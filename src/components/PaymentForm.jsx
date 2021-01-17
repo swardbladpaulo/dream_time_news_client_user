@@ -52,11 +52,11 @@ const PaymentForm = () => {
   };
   return (
     <>
-			{errorMessage && (
-				<Message data-cy="payment-message" color="red">
-					{errorMessage}
-				</Message>
-			)}
+      {errorMessage && (
+        <Message data-cy="payment-message" color="red">
+          {errorMessage}
+        </Message>
+      )}
       {successMess ? (
         <Message color="green" data-cy="payment-message">
           {successMess}

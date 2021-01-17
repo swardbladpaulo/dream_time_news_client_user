@@ -4,6 +4,7 @@ import SingleArticle from "./components/SingleArticle";
 import { Switch, Route } from "react-router-dom";
 import RegistrationForm from "./components/RegistrationForm";
 import MenuHeader from "./components/MenuHeader";
+import Footer from './components/Footer'
 
 const App = () => {
   return (
@@ -14,7 +15,8 @@ const App = () => {
         <Route exact path="/" component={DisplayArticlesData}></Route>
         <Route exact path="/articles/:id" component={SingleArticle}></Route>
         <Route exact path="/sign_up" component={RegistrationForm}></Route>
-      </Switch>        
+      </Switch>  
+      <Footer/>      
       
       </Suspense>
       
