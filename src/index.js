@@ -10,10 +10,6 @@ import './index.css';
 import { BrowserRouter } from "react-router-dom"
 import './i18n'
 
-// axios.defaults.baseURL = "http://localhost:3000/api"
-axios.defaults.baseURL =
-  process.env.REACT_APP_API_URL
-
 axios.defaults.baseURL = process.env.REACT_APP_API_URL;
 
 window.store = store;
