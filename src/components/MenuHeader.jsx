@@ -1,10 +1,12 @@
-import React from "react";
-import { Menu, Segment, Image } from "semantic-ui-react";
+import React, { useState }from "react";
+import { Menu, Segment, Image, Button, Icon } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import MasterModal from "./MasterModal";
 import i18n from "../i18n";
+import LoginForm from './LoginForm'
 
 const MenuHeader = () => {
+  const [selectLoginForm, setLoginForm] = useState(false);
   const changeLanguage = (e) => {
     i18n.changeLanguage (e.target.id)
   }
@@ -42,7 +44,16 @@ const MenuHeader = () => {
               margin: 5,
             }}
           />
-        </Menu.Item>
+          </Menu.Item>
+          <Button
+            icon labelPosition="left"
+            icon="user"
+            data-cy="login-btn"
+            onClick={(e) => setLoginForm(true)}>
+            <Icon name="user"></Icon>
+            Login
+          </Button>
+          {selectLoginForm && <LoginForm />}
           <MasterModal />
         </Menu.Item>
       </Menu>
