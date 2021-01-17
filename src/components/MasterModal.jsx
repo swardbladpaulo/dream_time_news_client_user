@@ -34,7 +34,7 @@ const MasterModal = () => {
 
 	return (
 		<>
-			<Button onClick={() => setFirstOpen(true)} data-cy="register-btn" color="green" >
+			<Button onClick={() => setFirstOpen(true)} data-cy="register-btn" color="red" size="huge" >
 				{t('register-btn')}
 			</Button>
 			<Modal

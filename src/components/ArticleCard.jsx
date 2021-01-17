@@ -37,7 +37,11 @@ const ArticleCard = ({ article }) => {
         >
           {article.sub_title}
         </Card.Meta>
-        <Card.Meta data-cy="author-email">{article.author}</Card.Meta>
+        {/* <Card.Meta data-cy="author-email">{article.author}</Card.Meta> */}
+        <Image data-cy="article-author"
+          src='./assets/journalist.png' avatar size="mini"
+          />
+          {article.author}
         <Card.Meta 
         data-cy="created-at"
         style={{
