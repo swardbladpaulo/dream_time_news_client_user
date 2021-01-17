@@ -9,7 +9,7 @@ const ArticleCard = ({ article }) => {
   return (
     <Card key={article.id} data-cy={`article-${article.id}`}>
       <Card.Content>
-      <Image data-cy="image" fluid src={article.image} />
+        <Image data-cy="image" fluid src={article.image} />
         <Card.Header
           data-cy="title"
           style={{
@@ -23,7 +23,7 @@ const ArticleCard = ({ article }) => {
         >
           {article.title}
         </Card.Header>
-       
+
         <Card.Meta
           data-cy="sub-title"
           style={{
@@ -37,25 +37,28 @@ const ArticleCard = ({ article }) => {
         >
           {article.sub_title}
         </Card.Meta>
-        {/* <Card.Meta data-cy="author-email">{article.author}</Card.Meta> */}
-        <Image data-cy="article-author"
-          src='./assets/journalist.png' avatar size="mini"
-          />
-          {article.author}
-        <Card.Meta 
-        data-cy="created-at"
-        style={{
-          marginBottom: 15,
-        }}
-        >{`${t ("CreatedAt")} ${article.created_at}`}</Card.Meta>
-        <Button fluid
+        <Image
+          data-cy="article-author"
+          src="./assets/journalist.png"
+          avatar
+          size="mini"
+        />
+        {article.author}
+        <Card.Meta
+          data-cy="created-at"
+          style={{
+            marginBottom: 15,
+          }}
+        >{`${t("CreatedAt")} ${article.created_at}`}</Card.Meta>
+        <Button
+          fluid
           data-id={article.id}
           data-cy={`read-me-button${article.id}`}
           as={NavLink}
           to={`/articles/${article.id}`}
           color="red"
         >
-          {t ("ReadMore")}
+          {t("ReadMore")}
         </Button>
       </Card.Content>
     </Card>

@@ -22,18 +22,17 @@ const MenuHeader = () => {
           />
         </Menu.Item>
         <Menu.Item position="right">
+          <Menu.Item>
+            <Label
+              pointing="right"
+              size="huge"
+              color="green"
+              icon="star"
+              content={t("Label")}
+            />
 
-              <Menu.Item>
-                <Label
-                  pointing="right"
-                  size="huge"
-                  color="green"
-                  icon="star"
-                  content={t("Label")}
-                />
-    
-                <MasterModal />
-              </Menu.Item>
+            <MasterModal />
+          </Menu.Item>
           <Menu.Item name="En">
             <Image
               data-cy="us-btn"
