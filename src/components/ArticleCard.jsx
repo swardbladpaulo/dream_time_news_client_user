@@ -9,7 +9,7 @@ const ArticleCard = ({ article }) => {
   return (
     <Card key={article.id} data-cy={`article-${article.id}`}>
       <Card.Content>
-      <Image fluid src={article.image} />
+      <Image data-cy="image" fluid src={article.image} />
         <Card.Header
           data-cy="title"
           style={{

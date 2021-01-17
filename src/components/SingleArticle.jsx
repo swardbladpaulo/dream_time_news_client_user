@@ -41,7 +41,7 @@ const SingleArticle = () => {
           <p data-cy="article-created-at">{`${t("CreatedAt")} ${
             singleArticle.created_at
           }`}</p>
-          <Image src={singleArticle.image} />
+          <Image data-cy="image" src={singleArticle.image} />
           <h3
             data-cy="article-sub-title"
             style={{

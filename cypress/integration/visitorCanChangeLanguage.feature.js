@@ -16,8 +16,8 @@ describe("visitor can choose language", () => {
   });
   it('successfully changes from english to swedish and back to english', () => {
     cy.get("[data-cy='se-btn']").click()
-    cy.get("[data-cy='register-btn']").should("contain", "Registrera dig här");
+    cy.get("[data-cy='register-btn']").should("contain", "Dream Time News Premium");
     cy.get("[data-cy='us-btn']").click()
-    cy.get("[data-cy='register-btn']").should("contain", "Register To View Premium Content");
+    cy.get("[data-cy='register-btn']").should("contain", "Dream Time News Premium");
   });
 });
