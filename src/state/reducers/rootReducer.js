@@ -22,12 +22,16 @@ const rootReducer = (state = initialState, action) => {
 
 		case "SET_USER_AS_SUBSCRIBER":
 			return {
-				...state,
 				currentUser: {
 					...state.currentUser,
 					role: action.payload.role,
 				},
 			};
+		case "PAYMENT_SUCCESS":
+			return {
+				...state,
+				successMessage: action.payload
+			}
 
 		case "SET_ERROR_MESSAGE":
 			return {

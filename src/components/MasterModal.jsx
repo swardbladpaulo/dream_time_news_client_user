@@ -4,18 +4,13 @@ import RegistrationForm from "./RegistrationForm";
 import PaymentForm from "./PaymentForm";
 import { performAuthentication } from "../modules/auth";
 import { useDispatch, useSelector } from "react-redux";
-// import { loadStripe } from "@stripe/stripe-js";
-// import { Elements } from "@stripe/react-stripe-js";
-import { useTranslation } from "react-i18next";
 
-// const stripePromise = loadStripe(
-//   "pk_test_51HuxhoEDdj3L9cb7mRwXVf3mjnVY7dk7NL7WmIZ31HGjkKHk9RSQASdCWIXiObHTiyfYkNhxKFsvLFkvLKyxM6Wz004BVP7pWj"
-// );
+import { useTranslation } from "react-i18next";
 
 const MasterModal = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
-  const { errorMessage, authenticated, currentUser } = useSelector(
+  const { errorMessage, authenticated, currentUser, successMessage } = useSelector(
     state => state
   );
   const [firstOpen, setFirstOpen] = useState(false);
@@ -86,9 +81,17 @@ const MasterModal = () => {
           </Modal.Header>
           <Modal.Header>{t("CardDetails")}</Modal.Header>
           <Modal.Content>
-            {/* <Elements stripe={stripePromise}> */}
-              <PaymentForm data-cy="payment-form" />
-            {/* </Elements> */}
+          {errorMessage && (
+        <Message data-cy="payment-message" color="red">
+          {errorMessage}
+        </Message>
+      )}
+      {successMessage ? (
+        <Message color="green" data-cy="payment-message">
+          {successMessage}
+        </Message>
+      ) :(
+            <PaymentForm data-cy="payment-form" />)}
           </Modal.Content>
           <Modal.Actions>
             <Button

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { Form, Label, Message, Button } from "semantic-ui-react";
+import { Form, Label,  Button } from "semantic-ui-react";
 import {
   CardNumberElement,
   CardExpiryElement,
@@ -10,50 +10,53 @@ import {
 } from "@stripe/react-stripe-js";
 import axios from "axios";
 import { useTranslation } from "react-i18next";
-import { getAuthHeaders } from '../modules/auth'
+import { getAuthHeaders } from "../modules/auth";
 
 const PaymentForm = () => {
   const stripe = useStripe();
   const elements = useElements();
   const dispatch = useDispatch();
   const { t } = useTranslation();
-  const [errorMessage, setErrorMessage] = useState(null);
-  const [stripeToken, setStripeToken] = useState(null);
-  const [successMess, setSuccessMess] = useState("");
+  // const [errorMessage, setErrorMessage] = useState("");
+  // const [successMess, setSuccessMess] = useState("");
 
   const submitPayment = async () => {
     const cardElement = elements.getElement(
       CardNumberElement,
       CardExpiryElement,
       CardCvcElement
-    ); 
-    const { token, error } = await stripe.createToken(cardElement); debugger
-    if (!error) {
-      setStripeToken(token);
-      setErrorMessage(null);
+    );
+    let headers = getAuthHeaders();
+    const stripeToken = await stripe.createToken(cardElement);
+    const response = await axios.post(
+      "/subscriptions",
+
+      { token: stripeToken },
+      { headers: headers }
+    );
+    if (response.status === 201) {
+ 
+        dispatch({
+          type: "SET_USER_AS_SUBSCRIBER",
+          payload: { role: "subscriber" },
+        });
+        dispatch({
+          type: "PAYMENT_SUCCESS",
+          payload: response.message,
+        });
+      
+      // setSuccessMess(response.message);
     } else {
-      setErrorMessage(error.message);
-      setStripeToken(null);
-    }
-    const response = axios.post("/subscriptions", {
-      // amount: 600,
-      token: stripeToken,
-    });
-    if (response.status === 200) {
       dispatch({
-        type: "SET_USER_AS_SUBSCRIBER",
-        payload: {
-          role: "subscriber",
-        },
+        type: "SET_ERROR_MESSAGE",
+        payload: response.message,
       });
-      setSuccessMess(`You are now a subscriber ${response.data.data.email}`);
-    } else {
-      setErrorMessage(response.error.message);
     }
   };
+
   return (
     <>
-      {errorMessage && (
+      {/* {errorMessage && (
         <Message data-cy="payment-message" color="red">
           {errorMessage}
         </Message>
@@ -62,30 +65,30 @@ const PaymentForm = () => {
         <Message color="green" data-cy="payment-message">
           {successMess}
         </Message>
-      ) : (
-        <Form id="paymentForm" data-cy="payment-form" onSubmit={submitPayment}>
-          <Form.Field data-cy="card-number">
-            <Label>{t("CardNumber")}</Label>
-            <CardNumberElement />
-          </Form.Field>
-          <Form.Field data-cy="card-expiry">
-            <Label>{t("ExpiryDate")}</Label>
-            <CardExpiryElement />
-          </Form.Field>
-          <Form.Field data-cy="card-cvc">
-            <Label>CVC</Label>
-            <CardCvcElement />
-          </Form.Field>
-          <Button
-            icon="check"
-            content={t("SubscribeNow")}
-            type="submit"
-            form="paymentForm"
-            data-cy="submit-payment"
-            primary
-          />
-        </Form>
-      )}
+      ) : ( */}
+      <Form id="paymentForm" data-cy="payment-form" onSubmit={submitPayment}>
+        <Form.Field data-cy="card-number">
+          <Label>{t("CardNumber")}</Label>
+          <CardNumberElement />
+        </Form.Field>
+        <Form.Field data-cy="card-expiry">
+          <Label>{t("ExpiryDate")}</Label>
+          <CardExpiryElement />
+        </Form.Field>
+        <Form.Field data-cy="card-cvc">
+          <Label>CVC</Label>
+          <CardCvcElement />
+        </Form.Field>
+        <Button
+          icon="check"
+          content={t("SubscribeNow")}
+          type="submit"
+          form="paymentForm"
+          data-cy="submit-payment"
+          primary
+        />
+      </Form>
+      {/* )} */}
     </>
   );
 };
