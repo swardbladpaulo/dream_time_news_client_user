@@ -4,13 +4,13 @@ import RegistrationForm from "./RegistrationForm";
 import PaymentForm from "./PaymentForm";
 import { performAuthentication } from "../modules/auth";
 import { useDispatch, useSelector } from "react-redux";
-import { loadStripe } from "@stripe/stripe-js";
-import { Elements } from "@stripe/react-stripe-js";
+// import { loadStripe } from "@stripe/stripe-js";
+// import { Elements } from "@stripe/react-stripe-js";
 import { useTranslation } from "react-i18next";
 
-const stripePromise = loadStripe(
-  "pk_test_51HuxhoEDdj3L9cb7mRwXVf3mjnVY7dk7NL7WmIZ31HGjkKHk9RSQASdCWIXiObHTiyfYkNhxKFsvLFkvLKyxM6Wz004BVP7pWj"
-);
+// const stripePromise = loadStripe(
+//   "pk_test_51HuxhoEDdj3L9cb7mRwXVf3mjnVY7dk7NL7WmIZ31HGjkKHk9RSQASdCWIXiObHTiyfYkNhxKFsvLFkvLKyxM6Wz004BVP7pWj"
+// );
 
 const MasterModal = () => {
   const { t } = useTranslation();
@@ -86,9 +86,9 @@ const MasterModal = () => {
           </Modal.Header>
           <Modal.Header>{t("CardDetails")}</Modal.Header>
           <Modal.Content>
-            <Elements stripe={stripePromise}>
+            {/* <Elements stripe={stripePromise}> */}
               <PaymentForm data-cy="payment-form" />
-            </Elements>
+            {/* </Elements> */}
           </Modal.Content>
           <Modal.Actions>
             <Button

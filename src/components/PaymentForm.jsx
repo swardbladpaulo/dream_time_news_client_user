@@ -10,6 +10,7 @@ import {
 } from "@stripe/react-stripe-js";
 import axios from "axios";
 import { useTranslation } from "react-i18next";
+import { getAuthHeaders } from '../modules/auth'
 
 const PaymentForm = () => {
   const stripe = useStripe();
@@ -25,8 +26,8 @@ const PaymentForm = () => {
       CardNumberElement,
       CardExpiryElement,
       CardCvcElement
-    );
-    const { token, error } = await stripe.createToken(cardElement);
+    ); 
+    const { token, error } = await stripe.createToken(cardElement); debugger
     if (!error) {
       setStripeToken(token);
       setErrorMessage(null);
@@ -34,8 +35,8 @@ const PaymentForm = () => {
       setErrorMessage(error.message);
       setStripeToken(null);
     }
-    const response = await axios.post("/subscriptions", {
-      amount: 600,
+    const response = axios.post("/subscriptions", {
+      // amount: 600,
       token: stripeToken,
     });
     if (response.status === 200) {
