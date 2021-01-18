@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import { useDispatch } from "react-redux";
-import { Form, Label,  Button } from "semantic-ui-react";
+import { Form, Label, Button } from "semantic-ui-react";
 import {
   CardNumberElement,
   CardExpiryElement,
@@ -17,8 +17,6 @@ const PaymentForm = () => {
   const elements = useElements();
   const dispatch = useDispatch();
   const { t } = useTranslation();
-  // const [errorMessage, setErrorMessage] = useState("");
-  // const [successMess, setSuccessMess] = useState("");
 
   const submitPayment = async () => {
     const cardElement = elements.getElement(
@@ -31,21 +29,18 @@ const PaymentForm = () => {
     const response = await axios.post(
       "/subscriptions",
 
-      { token: stripeToken },
+      stripeToken,
       { headers: headers }
     );
     if (response.status === 201) {
- 
-        dispatch({
-          type: "SET_USER_AS_SUBSCRIBER",
-          payload: { role: "subscriber" },
-        });
-        dispatch({
-          type: "PAYMENT_SUCCESS",
-          payload: response.message,
-        });
-      
-      // setSuccessMess(response.message);
+      dispatch({
+        type: "SET_USER_AS_SUBSCRIBER",
+        payload: { role: "subscriber" },
+      });
+      dispatch({
+        type: "PAYMENT_SUCCESS",
+        payload: response.data.message,
+      });
     } else {
       dispatch({
         type: "SET_ERROR_MESSAGE",
@@ -56,16 +51,6 @@ const PaymentForm = () => {
 
   return (
     <>
-      {/* {errorMessage && (
-        <Message data-cy="payment-message" color="red">
-          {errorMessage}
-        </Message>
-      )}
-      {successMess ? (
-        <Message color="green" data-cy="payment-message">
-          {successMess}
-        </Message>
-      ) : ( */}
       <Form id="paymentForm" data-cy="payment-form" onSubmit={submitPayment}>
         <Form.Field data-cy="card-number">
           <Label>{t("CardNumber")}</Label>
@@ -88,7 +73,6 @@ const PaymentForm = () => {
           primary
         />
       </Form>
-      {/* )} */}
     </>
   );
 };

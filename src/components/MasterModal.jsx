@@ -10,16 +10,19 @@ import { useTranslation } from "react-i18next";
 const MasterModal = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
-  const { errorMessage, authenticated, currentUser, successMessage } = useSelector(
-    state => state
-  );
+  const {
+    errorMessage,
+    authenticated,
+    currentUser,
+    successMessage,
+  } = useSelector(state => state);
+
   const [firstOpen, setFirstOpen] = useState(false);
-  const [secondOpen, setSecondOpen] = useState(false);
+  const [secondOpen, setSecondOpen] = useState(true);
 
   const registerAndProceed = e => {
     e.preventDefault();
     performAuthentication(e, dispatch);
-    setSecondOpen(authenticated);
   };
 
   const finalizePayment = () => {
@@ -70,7 +73,7 @@ const MasterModal = () => {
 
         <Modal
           onClose={() => setSecondOpen(false)}
-          open={secondOpen}
+          open={secondOpen && authenticated}
           size="medium"
           data-cy="payment-details"
         >
@@ -81,17 +84,18 @@ const MasterModal = () => {
           </Modal.Header>
           <Modal.Header>{t("CardDetails")}</Modal.Header>
           <Modal.Content>
-          {errorMessage && (
-        <Message data-cy="payment-message" color="red">
-          {errorMessage}
-        </Message>
-      )}
-      {successMessage ? (
-        <Message color="green" data-cy="payment-message">
-          {successMessage}
-        </Message>
-      ) :(
-            <PaymentForm data-cy="payment-form" />)}
+            {errorMessage && (
+              <Message data-cy="payment-message" color="red">
+                {errorMessage}
+              </Message>
+            )}
+            {successMessage ? (
+              <Message color="green" data-cy="payment-message">
+                {successMessage}
+              </Message>
+            ) : (
+              <PaymentForm data-cy="payment-form" />
+            )}
           </Modal.Content>
           <Modal.Actions>
             <Button

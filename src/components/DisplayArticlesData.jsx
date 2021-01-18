@@ -5,14 +5,13 @@ import { useSelector } from "react-redux";
 import { Card, Container } from "semantic-ui-react";
 
 const DisplayArticlesData = () => {
-  const { mainArticles } = useSelector(state => state);
+  const mainArticles = useSelector(state => state.mainArticles);
 
   useEffect(() => {
     getArticleData.index();
   }, []);
 
-  let articleIndex;
-  articleIndex = (
+  const articleIndex = (
     <Card.Group
       itemsPerRow={3}
       style={{
