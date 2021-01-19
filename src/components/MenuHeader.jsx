@@ -28,7 +28,7 @@ const MenuHeader = () => {
             icon labelPosition="left"
             icon="user"
             data-cy="login-btn"
-            as={NavLink}
+            as={ NavLink }
             to={`/login/`}>
             <Icon name="user"></Icon>
             Login

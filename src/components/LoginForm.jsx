@@ -30,16 +30,6 @@ const LoginForm = () => {
           label="Password"
           placeholder="Password LOGIN"
           iconPosition="left"
-        />
-        
-        <Form.Input
-          data-cy="password-confirmation"
-          icon="key"
-          type="password"
-          label="password-confirmation"
-          name="password_confirmation"
-          placeholder="Password Confirmation"
-          iconPosition="left"
         />  
         <Button data-cy="login-btn" icon labelPosition="left">
           <Icon name="user"></Icon>
