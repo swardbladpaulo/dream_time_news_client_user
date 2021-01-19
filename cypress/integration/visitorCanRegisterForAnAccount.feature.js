@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 describe("User can successfully register ", () => {
   beforeEach(() => {
     cy.server();
@@ -32,7 +33,7 @@ describe("User can successfully register ", () => {
       cy.get("[data-cy='password-confirmation']").type("123456789");
     });
     cy.get("[data-cy='first-registration']").within(() => {
-      cy.get("[data-cy='submit-btn']").click().click();
+      cy.get("[data-cy='submit-btn']").click();
     });
     cy.get("[data-cy='header-user-email']").should(
       "contain",
@@ -47,7 +48,7 @@ describe("User can successfully register ", () => {
         url: "http://localhost:3000/api/**",
         status: "422",
         response: {
-          errors: "Password confirmation doesn't match Password",
+          errors: ["Password confirmation doesn't match Password"],
         },
       });
     });
